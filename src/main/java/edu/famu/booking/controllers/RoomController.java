@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
+import java.util.Optional;
 
 @RestController //identified this class a controller used for REST API class.
 @RequestMapping("/api/v1/room") //sets up the base url for all calls to methods in this file
@@ -20,12 +21,12 @@ public class RoomController {
     }
 
     //get all
-    @GetMapping("/") //sets the path to this method
-    public ArrayList<SerializableRoom> getRooms() {
+    @GetMapping(value = {"/", "{sort}/"})  //sets the path to this method
+    public ArrayList<SerializableRoom> getRooms(@PathVariable Optional<String> sort) {
         ArrayList<SerializableRoom> rooms = new ArrayList<>();
 
         //Convert the Parse Product object to a POJO Product object that can be serialized by Spring
-        ArrayList<Room> list = roomService.retrieveRooms();
+        ArrayList<Room> list = roomService.retrieveRooms(sort);
         for(Room p : list)
         {
             rooms.add(p.getSerializable());

@@ -9,32 +9,47 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class HotelService {
     protected final Log logger = LogFactory.getLog(this.getClass()); //used to write to the console
 
-    public ArrayList<Hotel> retrieveHotels()
+    public ArrayList<Hotel> retrieveHotels(Optional<String> sort)
     {
-
         logger.info(Parse.isIsRootMode());
-        final ArrayList<Hotel> products = new ArrayList<>();
+        final ArrayList<Hotel> hotels = new ArrayList<>();
 
         ParseQuery<Hotel> query = ParseQuery.getQuery(Hotel.class);
+        List<Hotel> list = null;
+
         try {
-            List<Hotel> list = query.find();
+            if(sort.isPresent()) {
+                if(sort.equals("asc")){
+                    list = query.addAscendingOrder("id").find();
+                } else if (sort.equals("dsc")) {
+                    list = query.addDescendingOrder("id").find();
+                }
+            }        
+            else{
+                list = query.find();
+            }
+
+            
             for (Hotel p : list) {
                 //logger.info(p.toString()); //use if you want to see your products in the console
-                products.add(p);
+                hotels.add(p);
             }
         }
         catch(Exception e)
         {
             logger.error("Error occurred", e);
         }
-        logger.info(products.size());
-        return products;
+        logger.info(hotels.size());
+        return hotels;
     }
+
+
 
     public Hotel getHotelById(String id)
     {

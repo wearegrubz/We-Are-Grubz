@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
+import java.util.Optional;
 
 @RestController //identified this class a controller used for REST API class.
 @RequestMapping("/api/v1/user") //sets up the base url for all calls to methods in this file
@@ -20,12 +21,12 @@ public class UserController {
     }
 
     //get all
-    @GetMapping("/") //sets the path to this method
-    public ArrayList<SerializableUser> getUsers() {
+    @GetMapping(value = {"/", "{sort}/"})  //sets the path to this method
+    public ArrayList<SerializableUser> getUsers(@PathVariable Optional<String> sort) {
         ArrayList<SerializableUser> users = new ArrayList<>();
 
         //Convert the Parse Product object to a POJO Product object that can be serialized by Spring
-        ArrayList<User> list = userService.retrieveUsers();
+        ArrayList<User> list = userService.retrieveUsers(sort);
         for(User p : list)
         {
             users.add(p.getSerializable());

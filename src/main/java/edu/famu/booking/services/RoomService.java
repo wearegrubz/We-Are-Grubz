@@ -1,4 +1,5 @@
 package edu.famu.booking.services;
+import edu.famu.booking.models.parse.Hotel;
 import edu.famu.booking.models.parse.Room;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -9,20 +10,33 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RoomService {
     protected final Log logger = LogFactory.getLog(this.getClass()); //used to write to the console
 
-    public ArrayList<Room> retrieveRooms()
+    public ArrayList<Room> retrieveRooms(Optional<String> sort)
     {
 
         logger.info(Parse.isIsRootMode());
         final ArrayList<Room> rooms = new ArrayList<>();
 
         ParseQuery<Room> query = ParseQuery.getQuery(Room.class);
+        List<Room> list = null;
+
         try {
-            List<Room> list = query.find();
+            if(sort.isPresent()) {
+                if(sort.equals("asc")){
+                    list = query.addAscendingOrder("id").find();
+                } else if (sort.equals("dsc")) {
+                    list = query.addDescendingOrder("id").find();
+                }
+            }
+            else{
+                list = query.find();
+            }
+
             for (Room p : list) {
                 //logger.info(p.toString()); //use if you want to see your products in the console
                 rooms.add(p);
