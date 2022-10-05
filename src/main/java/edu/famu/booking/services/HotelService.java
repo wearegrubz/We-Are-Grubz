@@ -2,10 +2,10 @@ package edu.famu.booking.services;
 import edu.famu.booking.models.parse.Hotel;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.jvnet.hk2.annotations.Service;
 import org.parse4j.Parse;
 import org.parse4j.ParseException;
 import org.parse4j.ParseQuery;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;

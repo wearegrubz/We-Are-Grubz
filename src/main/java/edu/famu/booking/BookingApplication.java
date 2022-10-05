@@ -1,5 +1,4 @@
 package edu.famu.booking;
-
 import edu.famu.booking.models.parse.Hotel;
 import edu.famu.booking.models.parse.Room;
 import edu.famu.booking.models.parse.User;

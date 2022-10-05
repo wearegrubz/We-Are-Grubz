@@ -1,11 +1,13 @@
 package edu.famu.booking.controllers;
+
 import edu.famu.booking.models.parse.Hotel;
-import edu.famu.booking.services.HotelService;
 import edu.famu.booking.models.serializable.SerializableHotel;
+import edu.famu.booking.services.HotelService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import java.util.ArrayList;
 
 @RestController //identified this class a controller used for REST API class.
@@ -20,7 +22,7 @@ public class HotelController {
 
     //get all
     @GetMapping("/") //sets the path to this method
-    public ArrayList<SerializableHotel> getHotels() {
+    public ArrayList<SerializableHotel> getHotelList() {
         ArrayList<SerializableHotel> rooms = new ArrayList<>();
 
         //Convert the Parse Product object to a POJO Product object that can be serialized by Spring

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 
 @RestController //identified this class a controller used for REST API class.
-@RequestMapping("/api/v1/hotel") //sets up the base url for all calls to methods in this file
+@RequestMapping("/api/v1/user") //sets up the base url for all calls to methods in this file
 
 public class UserController {
 
