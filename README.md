@@ -84,7 +84,11 @@ Based on your required user stories, the next step is identifying your [core scr
   - Account
   - Group Creation
 
+## **Wireframes**
+![wireframes-1](https://user-images.githubusercontent.com/91871697/193975039-84436257-51c3-4ec9-942f-b2a227eac83d.png)
 
+
+## **Digital Wireframes & Mockups**
 ![image](https://user-images.githubusercontent.com/91871697/193973814-964fa898-47f9-4add-b178-f5f8f5d57f55.png)
 
 
