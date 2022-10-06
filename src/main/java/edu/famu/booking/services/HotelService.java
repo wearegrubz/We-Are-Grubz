@@ -15,7 +15,7 @@ import java.util.Optional;
 public class HotelService {
     protected final Log logger = LogFactory.getLog(this.getClass()); //used to write to the console
 
-    public ArrayList<Hotel> retrieveHotels(Optional<String> sort)
+    public ArrayList<Hotel> retrieveHotels(String sort)
     {
         logger.info(Parse.isIsRootMode());
         final ArrayList<Hotel> hotels = new ArrayList<>();
@@ -24,18 +24,13 @@ public class HotelService {
         List<Hotel> list = null;
 
         try {
-            if(sort.isPresent()) {
-                if(sort.equals("asc")){
-                    list = query.addAscendingOrder("id").find();
-                } else if (sort.equals("dsc")) {
-                    list = query.addDescendingOrder("id").find();
-                }
-            }        
-            else{
-                list = query.find();
+
+            if(sort.equals("asc")){
+                list = query.orderByAscending("cheapestPrice").find();
+            } else if (sort.equals("dsc")) {
+                list = query.orderByDescending("cheapestPrice").find();
             }
 
-            
             for (Hotel p : list) {
                 //logger.info(p.toString()); //use if you want to see your products in the console
                 hotels.add(p);

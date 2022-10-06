@@ -3,10 +3,7 @@ package edu.famu.booking.controllers;
 import edu.famu.booking.models.parse.Hotel;
 import edu.famu.booking.models.serializable.SerializableHotel;
 import edu.famu.booking.services.HotelService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -22,8 +19,8 @@ public class HotelController {
     }
 
     //get all
-    @GetMapping(value = {"/", "{sort}/"}) //sets the path to this method
-    public ArrayList<SerializableHotel> getHotelList(@PathVariable Optional<String> sort) {
+    @GetMapping(value = {"/"}) //sets the path to this method
+    public ArrayList<SerializableHotel> getHotelList(@RequestParam(name = "sort" , required = false, defaultValue = "asc") String sort) {
         ArrayList<SerializableHotel> rooms = new ArrayList<>();
 
         //Convert the Parse Product object to a POJO Product object that can be serialized by Spring

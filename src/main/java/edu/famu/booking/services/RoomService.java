@@ -16,7 +16,7 @@ import java.util.Optional;
 public class RoomService {
     protected final Log logger = LogFactory.getLog(this.getClass()); //used to write to the console
 
-    public ArrayList<Room> retrieveRooms(Optional<String> sort)
+    public ArrayList<Room> retrieveRooms(String sort)
     {
 
         logger.info(Parse.isIsRootMode());
@@ -26,15 +26,11 @@ public class RoomService {
         List<Room> list = null;
 
         try {
-            if(sort.isPresent()) {
-                if(sort.equals("asc")){
-                    list = query.addAscendingOrder("id").find();
-                } else if (sort.equals("dsc")) {
-                    list = query.addDescendingOrder("id").find();
-                }
-            }
-            else{
-                list = query.find();
+
+            if(sort.equals("asc")){
+                list = query.orderByAscending("price").find();
+            } else if (sort.equals("dsc")) {
+                list = query.orderByDescending("price").find();
             }
 
             for (Room p : list) {

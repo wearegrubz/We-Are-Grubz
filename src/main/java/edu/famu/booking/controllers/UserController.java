@@ -2,10 +2,8 @@ package edu.famu.booking.controllers;
 import edu.famu.booking.models.parse.User;
 import edu.famu.booking.models.serializable.SerializableUser;
 import edu.famu.booking.services.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -21,8 +19,8 @@ public class UserController {
     }
 
     //get all
-    @GetMapping(value = {"/", "{sort}/"})  //sets the path to this method
-    public ArrayList<SerializableUser> getUsers(@PathVariable Optional<String> sort) {
+    @GetMapping(value = {"/"})  //sets the path to this method
+    public ArrayList<SerializableUser> getUsers(@RequestParam(name = "sort" , required = false, defaultValue = "asc") String sort) {
         ArrayList<SerializableUser> users = new ArrayList<>();
 
         //Convert the Parse Product object to a POJO Product object that can be serialized by Spring

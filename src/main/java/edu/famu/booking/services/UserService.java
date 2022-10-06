@@ -16,7 +16,7 @@ import java.util.Optional;
 public class UserService {
     protected final Log logger = LogFactory.getLog(this.getClass()); //used to write to the console
 
-    public ArrayList<User> retrieveUsers(Optional<String> sort)
+    public ArrayList<User> retrieveUsers(String sort)
     {
 
         logger.info(Parse.isIsRootMode());
@@ -26,16 +26,13 @@ public class UserService {
         List<User> list = null;
 
         try {
-            if(sort.isPresent()) {
-                if(sort.equals("asc")){
-                    list = query.addAscendingOrder("id").find();
-                } else if (sort.equals("dsc")) {
-                    list = query.addDescendingOrder("id").find();
-                }
+
+            if(sort.equals("asc")){
+                list = query.orderByAscending("username").find();
+            } else if (sort.equals("dsc")) {
+                list = query.orderByDescending("username").find();
             }
-            else{
-                list = query.find();
-            }
+
             for (User p : list) {
                 //logger.info(p.toString()); //use if you want to see your products in the console
                 users.add(p);
