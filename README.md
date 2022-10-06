@@ -1,3 +1,21 @@
+All URIs start with: `http://localhost:8080/api/v1`
+
+|Network|Description| 
+|---|---| 
+|`/hotel`|Retrieves all hotels| 
+|`/hotel/?sort=asc`|Retrieves all hotels in ascending order by cheapestPrice| 
+|`/hotel/?sort=dsc`|Retrieves all hotels in descending order by cheapestPrice| 
+|`/hotel/{id}`| Retrieves a specific hotel based on it's ID|
+|`/room`|Retrieves all rooms| 
+|`/room/?sort=asc`|Retrieves all rooms in ascending order by price| 
+|`/room/?sort=dsc`|Retrieves all rooms in descending order by price| 
+|`/room/{id}`| Retrieves a specific rooms based on it's ID|
+|`user/`|Retrieves all user| 
+|`/user/?sort=asc`|Retrieves all users in ascending order by username| 
+|`/user/?sort=dsc`|Retrieves all users in descending order by username| 
+|`/user/{id}`| Retrieves a specific user based on it's ID|
+
+
 # CA02 - Booking API Part 1
 
 **Overview**: This project builds off last the assignment where you designed the Booking classes. You will create Parse
@@ -50,13 +68,6 @@ submit.
         - Get by id
 - Document endpoints. ***(1 point)***
     - Add to the README file the URI for each endpoint and a description (see example below)
-
-All URIs start with: `http://localhost:8080/api/v1`
-
-|Network|Description| 
-|---|---| 
-|`/product`|Retrieves all products| 
-|`/product/{id}`| Retrieves a specific product based on it's ID|
 
 ### Stretch Stories
 
