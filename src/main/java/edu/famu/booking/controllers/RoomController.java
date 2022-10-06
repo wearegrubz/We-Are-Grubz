@@ -34,7 +34,7 @@ public class RoomController {
 
     //get only one based on object id
     @GetMapping("/find/{id}")
-    public SerializableRoom getProductById(@PathVariable String id){
+    public SerializableRoom getRoomById(@PathVariable String id){
         return roomService.getRoomById(id).getSerializable();
     }
 
