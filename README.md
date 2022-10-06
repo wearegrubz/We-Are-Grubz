@@ -1,3 +1,8 @@
+##Walkthrough
+![Animation](https://user-images.githubusercontent.com/56606742/194438999-a8040723-0d1e-4a3e-a926-706fca1e4fb1.gif)
+
+
+##Endpoints
 All URIs start with: `http://localhost:8080/api/v1`
 
 |Network|Description| 
