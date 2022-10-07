@@ -15,7 +15,7 @@ All URIs start with: `http://localhost:8080/api/v1`
 |`/room/?sort=asc`|Retrieves all rooms in ascending order by price| 
 |`/room/?sort=dsc`|Retrieves all rooms in descending order by price| 
 |`/room/{id}`| Retrieves a specific rooms based on it's ID|
-|`user/`|Retrieves all user| 
+|`/user/`|Retrieves all user| 
 |`/user/?sort=asc`|Retrieves all users in ascending order by username| 
 |`/user/?sort=dsc`|Retrieves all users in descending order by username| 
 |`/user/{id}`| Retrieves a specific user based on it's ID|
