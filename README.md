@@ -106,15 +106,15 @@ Based on your required user stories, the next step is identifying your [core scr
 | password | String | user's password        |
 
 **Session**
-| Property  | Type   | Description                                |
-|-----------|--------|--------------------------------------------|
-| sessionId | String | unique ID for the session                  |
-| link      | String | unique link to session                     |
-| host      | String | ID of user that hosts session              |
-| users     | Array  | array storing users in session (by userId) |
-| location  | String | user's street address/zip code             |
-| radius    | int    | user's specified radius preference         |
-| recommendations  | Array | restaurant IDs             |
+| Property          | Type   | Description                                |
+|-------------------|--------|--------------------------------------------|
+| sessionId         | String | unique ID for the session                  |
+| link              | String | unique link to session                     |
+| host              | String | ID of user that hosts session              |
+| users             | Array  | array storing users in session (by userId) |
+| location          | String | user's street address/zip code             |
+| radius            | int    | user's specified radius preference         |
+| recommendations   | Array  | restaurant IDs                             |
 
 **Taste**
 | Property  | Type   | Description                                 |
