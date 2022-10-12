@@ -98,6 +98,30 @@ Based on your required user stories, the next step is identifying your [core scr
 ### Models
 
 **User**
+| Property | Type   | Description            |
+|----------|--------|------------------------|
+| userId   | String | unique ID for the user |
+| email    | String | user's email           |
+| fullName | String | user's full name       |
+| password | String | user's password        |
+
+**Session**
+| Property  | Type   | Description                                |
+|-----------|--------|--------------------------------------------|
+| sessionId | String | unique ID for the session                  |
+| link      | String | unique link to session                     |
+| host      | String | ID of user that hosts session              |
+| users     | Array  | array storing users in session (by userId) |
+| location  | String | user's street address/zip code             |
+| radius    | int    | user's specified radius preference         |
+| recommendations  | Array | restaurant IDs             |
+
+**Taste**
+| Property  | Type   | Description                                 |
+|-----------|--------|---------------------------------------------|
+| userId    | String | unique ID for the user                      |
+| sessionId | String | unique ID for the session                   |
+| cuisine   | Array  | array storing users' tastes for the session |
 
 ### Networking
 
