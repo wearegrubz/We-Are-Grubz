@@ -1,7 +1,6 @@
 #
 # **Group D Milestone 1: Grubz**
 
-## **1. User Stories (Required and Optional)**
 
 # Grubz
 
@@ -25,6 +24,8 @@ Grubz is an interactive app that allows friends to get together, decide on their
 - **Scope:** First we can start with finding spots for restaurants in the Tallahassee area but after that we could expand to our capacities limit
 
 ## Product Spec
+## **1. User Stories (Required and Optional)**
+
 **Required Must-have Stories**
 
 For Grubz, we identified the following "must-have" features which a user needs to be able to perform for the app to work:
