@@ -98,19 +98,19 @@ Based on your required user stories, the next step is identifying your [core scr
 
 -   Create Account
 
--   (Create/POST) Creating a new account
+  -   (Create/POST) Creating a new account
 
 -   Generate Group
 
--   (Create/POST) Creating a group session
+  -   (Create/POST) Creating a group session
 
 -   Taste Selection
 
--   (Create/POST) Creating a taste
+  -   (Create/POST) Creating a taste
 
 -   Recommendations
 
--   (Read/GET) Get Users in group
+  -   (Read/GET) Get Users in group
 
--   (Read/GET) Get recommendations
+  -   (Read/GET) Get recommendations
 
