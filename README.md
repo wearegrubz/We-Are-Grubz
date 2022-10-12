@@ -1,7 +1,5 @@
 # Group D Milestone 1: Grubz
 
-# Grubz
-
 ## Table of Contents
 
 1. Overview 
