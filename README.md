@@ -1,6 +1,4 @@
-# **Group D Milestone 1: Grubz**
-
-## **1. User Stories (Required and Optional)**
+# Group D Milestone 1: Grubz
 
 # Grubz
 
@@ -10,6 +8,7 @@
 2. Product Spec
 3. Wireframes
 4. Schema
+
 
 ## Overview
 
