@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-1. Overview 
+1. Overview
 2. Product Spec
 3. Wireframes
 4. Schema
@@ -45,43 +45,43 @@ For Grubz, we identified the following "must-have" features which a user needs t
 Based on your required user stories, the next step is identifying your [core screen archetypes](https://guides.codepath.com/android/Mobile-Screen-Archetypes), these are the different screens your app will have to have to function. For example:
 
 - Login
-  - User can login
+    - User can login
 - Account Creation
-  - User can create a new account
+    - User can create a new account
 - Group Creation
-  - User can create a group session
-  - User can invite friends to group
-  - User can display QR code
+    - User can create a group session
+    - User can invite friends to group
+    - User can display QR code
 - Taste Selection
-  - User selects what they have a taste for and preferences
-  - Search for preferences
+    - User selects what they have a taste for and preferences
+    - Search for preferences
 - Recommendations
-  - User can view map that displays local restaurants
-  - User can view recommended food spots
-  - User can vote for top 3
+    - User can view map that displays local restaurants
+    - User can view recommended food spots
+    - User can vote for top 3
 - Account
-  - User can see account details
-  - User can edit account details
+    - User can see account details
+    - User can edit account details
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
 - Landing Page
-  - Login
-  - Create Account
+    - Login
+    - Create Account
 - Login
-  - Group Creation
+    - Group Creation
 - Create Account
-  - Group Creation
+    - Group Creation
 - Group Creation
-  - Taste Selection
-  - Account
+    - Taste Selection
+    - Account
 - Taste Selection
-  - Recommendation
+    - Recommendation
 - Recommendations
-  - Account
-  - Group Creation
+    - Account
+    - Group Creation
 
 
 ## Wireframes
@@ -126,12 +126,12 @@ Based on your required user stories, the next step is identifying your [core scr
 **List of network requests by screen**
 
 - Create Account
-  - (Create/POST) Creating a new account
+    - (Create/POST) Creating a new account
 - Generate Group
-  - (Create/POST) Creating a group session
+    - (Create/POST) Creating a group session
 - Taste Selection
-  - (Create/POST) Creating a taste
+    - (Create/POST) Creating a taste
 - Recommendations
-  - (Read/GET) Get Users in group
-  - (Read/GET) Get recommendations
+    - (Read/GET) Get Users in group
+    - (Read/GET) Get recommendations
 
