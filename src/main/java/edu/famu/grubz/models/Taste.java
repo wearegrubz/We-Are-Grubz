@@ -12,13 +12,11 @@ import java.util.ArrayList;
 @NoArgsConstructor
 public class Taste {
     private String userId;
-    private String groupId;
     private ArrayList<String> cuisines;
 
     public JSONObject getJSONObject(){
         JSONObject obj = new JSONObject();
         obj.append("userId", userId);
-        obj.append("groupId", groupId);
         obj.append("cuisines", cuisines);
         return obj;
     }

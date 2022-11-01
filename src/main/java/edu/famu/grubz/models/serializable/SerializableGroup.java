@@ -13,9 +13,8 @@ import java.util.ArrayList;
 public class SerializableGroup {
     private String hostId;
     private ArrayList<String> userIds;
-    private String link;
     private String location;
-    private String radius;
+    private int radius;
     private ArrayList<Taste> tastes;
     private @Nullable ArrayList<String> recommendations;
 }

@@ -2,10 +2,12 @@ package edu.famu.grubz.models.parse;
 import edu.famu.grubz.models.serializable.SerializableGroup;
 import edu.famu.grubz.models.Taste;
 import org.json.JSONArray;
+import org.parse4j.ParseClassName;
 import org.parse4j.ParseObject;
 
 import java.util.ArrayList;
 
+@ParseClassName("Group")
 public class Group extends ParseObject {
     final static String HOSTID = "hostId";
 
@@ -37,13 +39,6 @@ public class Group extends ParseObject {
         put(USERIDS, createJSONArray(userIds));
     }
 
-    public String getLink() {
-        return getString(LINK);
-    }
-    public void setLink(String link) {
-        put(LINK, link);
-    }
-
     public String getLocation() {
         return getString(LOCATION);
     }
@@ -51,10 +46,10 @@ public class Group extends ParseObject {
         put(LOCATION, location);
     }
 
-    public String getRadius() {
-        return getString(RADIUS);
+    public int getRadius() {
+        return getInt(RADIUS);
     }
-    public void setRadius(String radius) {
+    public void setRadius(int radius) {
         put(RADIUS, radius);
     }
 
@@ -87,7 +82,7 @@ public class Group extends ParseObject {
 
     public SerializableGroup getSerializable() {
         return new SerializableGroup(
-                getHostId(), getUserIds(), getLink(), getLocation(),
+                getHostId(), getUserIds(), getLocation(),
                 getRadius(), getTastes(), getRecomendations()
         );
 
