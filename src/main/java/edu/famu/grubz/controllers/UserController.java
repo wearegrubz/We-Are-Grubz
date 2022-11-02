@@ -5,6 +5,7 @@ import edu.famu.grubz.models.serializable.SerializableUser;
 import edu.famu.grubz.services.UserService;
 import org.parse4j.ParseUser;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,5 +32,10 @@ public class UserController {
             users.add(p);
         }
         return users;
+    }
+
+    @GetMapping("/find/{id}")
+    public SerializableUser getUserById(@PathVariable String id){
+        return userService.getUserById(id);
     }
 }

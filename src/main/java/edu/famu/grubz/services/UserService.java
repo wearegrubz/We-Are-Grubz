@@ -5,6 +5,7 @@ import edu.famu.grubz.models.serializable.SerializableUser;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.parse4j.Parse;
+import org.parse4j.ParseException;
 import org.parse4j.ParseQuery;
 import org.parse4j.ParseUser;
 import org.springframework.stereotype.Service;
@@ -37,5 +38,24 @@ public class UserService {
         }
         logger.info(users.size());
         return users;
+    }
+
+    public SerializableUser getUserById(String id)
+    {
+        ParseUser user = null;
+
+        //defines the query for the product class
+        ParseQuery<ParseUser> query = ParseQuery.getQuery(ParseUser.class);
+
+        try{
+            user = query.get(id); //gets a single record based on objectId
+
+        }catch (ParseException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+
+        return new SerializableUser(user.getString("name"), user.getUsername(), user.getEmail(), user.getString("password"));
     }
 }
