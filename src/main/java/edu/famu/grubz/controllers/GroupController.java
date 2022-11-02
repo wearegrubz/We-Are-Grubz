@@ -3,10 +3,7 @@ package edu.famu.grubz.controllers;
 import edu.famu.grubz.models.parse.Group;
 import edu.famu.grubz.models.serializable.SerializableGroup;
 import edu.famu.grubz.services.GroupService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -31,6 +28,11 @@ public class GroupController {
             groups.add(p.getSerializable());
         }
         return groups;
+    }
+
+    @GetMapping("/find/{id}")
+    public SerializableGroup getGroupById(@PathVariable String id){
+        return groupService.getGroupById(id).getSerializable();
     }
 
 }

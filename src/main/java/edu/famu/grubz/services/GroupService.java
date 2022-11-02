@@ -38,4 +38,21 @@ public class GroupService {
         return groups;
     }
 
+    public Group getGroupById(String id)
+    {
+        Group group = null;
+
+        //defines the query for the product class
+        ParseQuery<Group> query = ParseQuery.getQuery(Group.class);
+
+        try{
+            group = query.get(id); //gets a single record based on objectId
+        }catch (ParseException e)
+        {
+            e.printStackTrace();
+        }
+
+        return group;
+    }
+
 }
