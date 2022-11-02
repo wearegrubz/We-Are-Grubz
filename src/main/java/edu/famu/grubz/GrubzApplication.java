@@ -12,8 +12,9 @@ public class GrubzApplication {
 	public static void main(String[] args) {
 		ParseRegistry.registerSubclass(Group.class);
 		ParseRegistry.registerSubclass(User.class);
-		Dotenv dotenv = Dotenv.configure().filename("env").load();
+		Dotenv dotenv = Dotenv.configure().filename(".env").load();
 		Parse.initialize(dotenv.get("PARSE_APP_ID"), dotenv.get("PARSE_REST_ID"));
+		Parse.initializeAsRoot(dotenv.get("PARSE_APP_ID"), dotenv.get("PARSE_MASTER_KEY"));
 		SpringApplication.run(GrubzApplication.class, args);
 	}
 }

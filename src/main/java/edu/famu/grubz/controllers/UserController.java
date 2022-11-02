@@ -3,6 +3,7 @@ package edu.famu.grubz.controllers;
 import edu.famu.grubz.models.parse.User;
 import edu.famu.grubz.models.serializable.SerializableUser;
 import edu.famu.grubz.services.UserService;
+import org.parse4j.ParseUser;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,10 +25,10 @@ public class UserController {
         ArrayList<SerializableUser> users = new ArrayList<>();
 
         //Convert the Parse Product object to a POJO Product object that can be serialized by Spring
-        ArrayList<User> list = userService.retrieveUsers();
-        for(User p : list)
+        ArrayList<SerializableUser> list = userService.retrieveUsers();
+        for(SerializableUser p : list)
         {
-            users.add(p.getSerializable());
+            users.add(p);
         }
         return users;
     }

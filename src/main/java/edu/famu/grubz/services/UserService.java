@@ -1,10 +1,12 @@
 package edu.famu.grubz.services;
 
 import edu.famu.grubz.models.parse.User;
+import edu.famu.grubz.models.serializable.SerializableUser;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.parse4j.Parse;
 import org.parse4j.ParseQuery;
+import org.parse4j.ParseUser;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,18 +17,18 @@ public class UserService {
 
     protected final Log logger = LogFactory.getLog(this.getClass()); //used to write to the console
 
-    public ArrayList<User> retrieveUsers()
+    public ArrayList<SerializableUser> retrieveUsers()
     {
         logger.info(Parse.isIsRootMode());
-        final ArrayList<User> users = new ArrayList<>();
+        final ArrayList<SerializableUser> users = new ArrayList<>();
 
-        ParseQuery<User> query = ParseQuery.getQuery(User.class);
+        ParseQuery<ParseUser> query = ParseQuery.getQuery(ParseUser.class);
 
         try {
-            List<User> list = query.find();
-            for (User p : list) {
+            List<ParseUser> list = query.find();
+            for (ParseUser p : list) {
                 logger.info(p.toString()); //use if you want to see your products in the console
-                users.add(p);
+                users.add(new SerializableUser(p.getString("name"), p.getUsername(), p.getEmail(), p.getString("password")));
             }
         }
         catch(Exception e)
