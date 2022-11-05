@@ -35,4 +35,9 @@ public class GroupController {
         return groupService.getGroupById(id).getSerializable();
     }
 
+    @PostMapping("/")
+    public String createGroup(@RequestBody SerializableGroup group){
+        return groupService.addGroup(group);
+    }
+
 }

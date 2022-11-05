@@ -58,4 +58,27 @@ public class UserService {
 
         return new SerializableUser(user.getString("name"), user.getUsername(), user.getEmail(), user.getString("password"));
     }
+
+    public String addUser(SerializableUser user)
+    {
+        String message = ""; //message we will return to the user
+
+        //REMAINING CODE GOES HERE
+        User parseUser = new User(); //Parse Product Object
+
+        //set the value of each of the fields
+        parseUser.put("name", user.getName());
+        parseUser.setUsername(user.getUsername());
+        parseUser.setPassword(user.getPassword());
+        parseUser.setEmail(user.getEmail());
+
+        try {
+            parseUser.signUp();
+            message="User Created";
+        } catch (ParseException e) {
+            message = "Error creating user. " + e.getMessage();
+            e.printStackTrace();
+        }
+        return message;
+    }
 }

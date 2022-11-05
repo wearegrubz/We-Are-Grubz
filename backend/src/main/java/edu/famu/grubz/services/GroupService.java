@@ -1,6 +1,7 @@
 package edu.famu.grubz.services;
 
 import edu.famu.grubz.models.parse.Group;
+import edu.famu.grubz.models.serializable.SerializableGroup;
 import org.springframework.stereotype.Service;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -53,6 +54,34 @@ public class GroupService {
         }
 
         return group;
+    }
+
+    public String addGroup(SerializableGroup group)
+    {
+        String message; //message we will return to the user
+
+        //REMAINING CODE GOES HERE
+        Group parseGroup = new Group(); //Parse Product Object
+
+        //set the value of each of the fields
+        parseGroup.setHostId(group.getHostId());
+        parseGroup.setUserIds(group.getUserIds());
+        parseGroup.setLocation(group.getLocation());
+        parseGroup.setRadius(group.getRadius());
+        parseGroup.setTastes(group.getTastes());
+        parseGroup.setRecommendations(group.getRecommendations());
+
+
+        try {
+            parseGroup.save(); //runs the query to insert the new value
+            message = "Group Created"; //set success the return message
+
+        } catch (ParseException e) {
+            e.printStackTrace(); //print the error to the console.
+            // set the error return message
+            message = "Error creating group. " + e.getMessage();
+        }
+        return message;
     }
 
 }

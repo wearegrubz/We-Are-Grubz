@@ -12,7 +12,7 @@ import java.util.ArrayList;
 @AllArgsConstructor
 public class SerializableGroup {
     private String hostId;
-    private ArrayList<String> userIds;
+    private @Nullable ArrayList<String> userIds;
     private String location;
     private int radius;
     private ArrayList<Taste> tastes;

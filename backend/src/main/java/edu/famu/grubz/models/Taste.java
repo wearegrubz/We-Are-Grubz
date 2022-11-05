@@ -13,7 +13,6 @@ import java.util.ArrayList;
 public class Taste {
     private String userId;
     private ArrayList<String> cuisines;
-
     public JSONObject getJSONObject(){
         JSONObject obj = new JSONObject();
         obj.append("userId", userId);

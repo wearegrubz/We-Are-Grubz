@@ -60,7 +60,11 @@ public class Group extends ParseObject {
     }
     public void setTastes(ArrayList<Taste> tastes)
     {
-        put(TASTES, createJSONArray(tastes));
+        JSONArray items = new JSONArray();
+        for(Taste c : tastes)
+            items.put(c.getJSONObject());
+
+        put(TASTES, items);
     }
 
     public ArrayList<String> getRecomendations()
