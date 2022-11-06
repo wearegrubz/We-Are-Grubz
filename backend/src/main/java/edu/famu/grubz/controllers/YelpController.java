@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class YelpController {
     private YelpService yelpService;
 
-    public YelpController(YelpService groupService) {
+    public YelpController(YelpService yelpService) {
         this.yelpService = yelpService;
     }
 }
