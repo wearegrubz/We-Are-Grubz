@@ -85,7 +85,7 @@ public class Group extends ParseObject {
     }
 
     public SerializableGroup getSerializable() {
-        return new SerializableGroup(
+        return new SerializableGroup(getObjectId(),
                 getHostId(), getUserIds(), getLocation(),
                 getRadius(), getTastes(), getRecomendations()
         );

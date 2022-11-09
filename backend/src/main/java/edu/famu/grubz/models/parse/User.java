@@ -23,7 +23,7 @@ public class User extends ParseUser {
     }
 
     public SerializableUser getSerializable() {
-        return new SerializableUser(getName(), getUsername(), getEmail(),
+        return new SerializableUser(getObjectId(), getName(), getUsername(), getEmail(),
                 getPassword()
         );
     }

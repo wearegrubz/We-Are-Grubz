@@ -29,7 +29,7 @@ public class UserService {
             List<ParseUser> list = query.find();
             for (ParseUser p : list) {
                 logger.info(p.toString()); //use if you want to see your products in the console
-                users.add(new SerializableUser(p.getString("name"), p.getUsername(), p.getEmail(), p.getString("password")));
+                users.add(new SerializableUser(p.getObjectId(), p.getString("name"), p.getUsername(), p.getEmail(), p.getString("password")));
             }
         }
         catch(Exception e)
@@ -56,7 +56,7 @@ public class UserService {
             return null;
         }
 
-        return new SerializableUser(user.getString("name"), user.getUsername(), user.getEmail(), user.getString("password"));
+        return new SerializableUser(user.getObjectId(), user.getString("name"), user.getUsername(), user.getEmail(), user.getString("password"));
     }
 
     public String addUser(SerializableUser user)

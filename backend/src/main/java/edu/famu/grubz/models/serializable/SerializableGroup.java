@@ -11,10 +11,11 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SerializableGroup {
+    private String id;
     private String hostId;
     private @Nullable ArrayList<String> userIds;
     private String location;
     private int radius;
-    private ArrayList<Taste> tastes;
+    private @Nullable ArrayList<Taste> tastes;
     private @Nullable ArrayList<String> recommendations;
 }

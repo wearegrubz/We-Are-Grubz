@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SerializableUser {
+    private String id;
     private String name;
     private String username;
     private String email;
