@@ -1,8 +1,12 @@
 package edu.famu.grubz.services;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import okhttp3.*;
+import io.github.cdimascio.dotenv.Dotenv;
 import edu.famu.grubz.models.Taste;
 import edu.famu.grubz.models.parse.Group;
 import edu.famu.grubz.models.serializable.SerializableGroup;
+import org.apache.http.client.methods.RequestBuilder;
 import org.json.JSONArray;
 import org.parse4j.ParseObject;
 import org.springframework.stereotype.Service;
@@ -12,6 +16,7 @@ import org.parse4j.Parse;
 import org.parse4j.ParseException;
 import org.parse4j.ParseQuery;
 
+import java.io.IOException;
 import java.util.*;
 
 @Service
@@ -19,9 +24,10 @@ public class GroupService {
 
     protected final Log logger = LogFactory.getLog(this.getClass()); //used to write to the console
 
+    Dotenv dotenv = Dotenv.configure().filename("env").load();
+
     public ArrayList<Group> retrieveGroups()
     {
-        logger.info(Parse.isIsRootMode());
         final ArrayList<Group> groups = new ArrayList<>();
 
         ParseQuery<Group> query = ParseQuery.getQuery(Group.class);
@@ -37,7 +43,6 @@ public class GroupService {
         {
             logger.error("Error occurred", e);
         }
-        logger.info(groups.size());
         return groups;
     }
 
@@ -88,7 +93,6 @@ public class GroupService {
 
     public String addUserToGroup(String userID, String groupID)
     {
-        logger.info("service is running");
         String message = null; //message we will return to the user
 
         Group group = this.getGroupById(groupID);
@@ -96,8 +100,6 @@ public class GroupService {
         ArrayList<String> userIds = group.getUserIds();
 
         userIds.add(userID);
-
-        logger.info(userIds);
 
         ParseQuery<Group> query = ParseQuery.getQuery(Group.class);
 
@@ -126,9 +128,6 @@ public class GroupService {
 
         ArrayList<Taste> tastes = group.getTastes();
 
-        logger.info(tastes);
-        logger.info(taste);
-
         JSONArray items = new JSONArray();
 
         for(Object c : tastes)
@@ -136,16 +135,11 @@ public class GroupService {
 
         items.put(taste);
 
-        logger.info(items);
-
         ParseQuery<Group> query = ParseQuery.getQuery(Group.class);
 
         try {
             gp = query.get(groupID);
-            //logger.info(groupID)
-            logger.info(gp);
             gp.put("tastes", items);
-            //gp.add("tastes", taste);
             gp.save();
             message = "Taste added to group";
 
@@ -157,5 +151,43 @@ public class GroupService {
         return message;
     }
 
+    public Object retrieveReccomendation(String groupId) {
+
+        String message = null;
+
+        Response response = null;
+
+        Object entity = null;
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        OkHttpClient client = new OkHttpClient();
+
+        Group group = this.getGroupById((groupId));
+
+        HttpUrl httpUrl = new HttpUrl.Builder()
+                .scheme("https")
+                .host("api.yelp.com")
+                .addPathSegment("v3")
+                .addPathSegment("businesses")
+                .addPathSegment("search")
+                .addQueryParameter("location", group.getLocation())
+                .build();
+
+
+        Request requesthttp = new Request.Builder()
+                .addHeader("Authorization", "Bearer " + dotenv.get("YELP_API_KEY"))
+                .url(httpUrl)
+                .build();
+        try{
+            response = client.newCall(requesthttp).execute();
+            logger.info(response);
+            entity = objectMapper.readValue(response.body().string(), Object.class);
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return entity;
+    }
 
 }

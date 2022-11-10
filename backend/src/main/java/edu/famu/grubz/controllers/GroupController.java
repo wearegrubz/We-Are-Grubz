@@ -54,4 +54,9 @@ public class GroupController {
         return groupService.addTasteToGroup(taste, groupId);
     }
 
+    @GetMapping("/recommendation/{group-id}")
+    public Object getRecommendation(@PathVariable("group-id") String groupId){
+
+        return groupService.retrieveReccomendation(groupId);
+    }
 }
