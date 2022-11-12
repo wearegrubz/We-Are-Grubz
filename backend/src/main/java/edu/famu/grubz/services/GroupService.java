@@ -17,6 +17,7 @@ import org.parse4j.ParseException;
 import org.parse4j.ParseQuery;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.*;
 
 @Service
@@ -25,6 +26,18 @@ public class GroupService {
     protected final Log logger = LogFactory.getLog(this.getClass()); //used to write to the console
 
     Dotenv dotenv = Dotenv.configure().filename("env").load();
+
+    HashMap<String, String[]> categories = new HashMap<String, String[]>();
+
+    /*
+    categories.put("american", ["newamerican",
+            "tradamerican"
+            ]);
+            "american": ["newamerican",
+                         "tradamerican"
+                        ],
+            "asian": ["asianfusion"]
+    );*/
 
     public ArrayList<Group> retrieveGroups()
     {
@@ -151,6 +164,25 @@ public class GroupService {
         return message;
     }
 
+    private Set<String> analyzeTaste(Group group){
+
+        Set<String> set = new HashSet<>();
+
+        ArrayList<Taste> tastes = group.getTastes();
+
+        for(Object c : tastes){
+            int start = c.toString().indexOf("[")+1;
+            int end = c.toString().indexOf("]");
+            String taste_str = c.toString().subSequence(start, end).toString();
+            String[] taste_arr = taste_str.split(", ");
+            for(String taste : taste_arr)
+                set.add(taste);
+        }
+        logger.info(set);
+        return set;
+
+    }
+
     public Object retrieveReccomendation(String groupId) {
 
         String message = null;
@@ -172,6 +204,8 @@ public class GroupService {
                 .addPathSegment("businesses")
                 .addPathSegment("search")
                 .addQueryParameter("location", group.getLocation())
+                .addQueryParameter("radius", Integer.toString(group.getRadius()))
+                .addQueryParameter("limit", Integer.toString(50))
                 .build();
 
 
@@ -186,6 +220,8 @@ public class GroupService {
         }catch (IOException e) {
             e.printStackTrace();
         }
+
+        Set<String> taste = this.analyzeTaste(group);
 
         return entity;
     }
