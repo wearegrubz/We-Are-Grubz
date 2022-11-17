@@ -4,6 +4,7 @@ import edu.famu.grubz.models.Taste;
 import edu.famu.grubz.models.parse.Group;
 import edu.famu.grubz.models.serializable.SerializableGroup;
 import edu.famu.grubz.services.GroupService;
+import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
