@@ -1,28 +1,20 @@
 package edu.famu.grubz.services;
 
 import com.google.gson.Gson;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import net.minidev.json.parser.JSONParser;
 import okhttp3.*;
 import io.github.cdimascio.dotenv.Dotenv;
 import edu.famu.grubz.models.Taste;
 import edu.famu.grubz.models.parse.Group;
 import edu.famu.grubz.models.serializable.SerializableGroup;
-import org.apache.http.client.methods.RequestBuilder;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.parse4j.ParseObject;
-import org.springframework.boot.json.JsonParser;
 import org.springframework.stereotype.Service;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.parse4j.Parse;
 import org.parse4j.ParseException;
 import org.parse4j.ParseQuery;
-
-
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.util.*;
 
 @Service
