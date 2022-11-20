@@ -22,7 +22,7 @@ public class GroupService {
 
     protected final Log logger = LogFactory.getLog(this.getClass()); //used to write to the console
 
-    protected Dotenv dotenv = Dotenv.configure().filename("env").load();
+    private Dotenv dotenv = Dotenv.configure().filename("env").load();
 
     public ArrayList<Group> retrieveGroups()
     {
@@ -168,7 +168,7 @@ public class GroupService {
         return set;
     }
 
-    protected Request getYelpRequestHttp(Group group, String cuisine) {
+    private Request getYelpRequestHttp(Group group, String cuisine) {
 
         HttpUrl httpUrl = new HttpUrl.Builder()
                 .scheme("https")
@@ -193,8 +193,6 @@ public class GroupService {
     }
 
     public Object retrieveReccomendation(String groupId) {
-
-        String message = null;
 
         Response response = null;
 
@@ -237,7 +235,6 @@ public class GroupService {
 
         Gson gson = new Gson();
         return gson.fromJson(reccomendations.toString(), Object.class);
-
     }
 
 }
