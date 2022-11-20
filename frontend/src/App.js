@@ -1,4 +1,4 @@
-import './App.css';
+// import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {
   BrowserRouter as Router,
@@ -6,14 +6,14 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
 
 
 function App() {
   return (
 
       <>
-        <Navbar />
+        <Home />
       </>
 
   );
