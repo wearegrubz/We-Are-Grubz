@@ -36,6 +36,7 @@ public class UserController {
         return userService.getUserById(id);
     }
 
+    @CrossOrigin(origins="*")
     @PostMapping("/")
     public String createUser(@RequestBody SerializableUser user){
         return userService.addUser(user);
