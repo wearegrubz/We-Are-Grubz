@@ -89,7 +89,8 @@ Based on your required user stories, the next step is identifying your [core scr
 
 
 ## Updated Wireframes
-![wireframes-2](https://user-images.githubusercontent.com/92326654/202339861-744e577f-abc0-452c-a62f-bf3503405d42.jpeg)
+![wireframes-2](https://user-images.githubusercontent.com/92326654/204020974-0322fd2c-0c0f-4d05-af81-9b6a12c377d1.jpeg)
+![wireframes-3](https://user-images.githubusercontent.com/92326654/204021024-d77a32e9-bab7-4929-8600-3e879a32be9b.jpeg)
 
 
 ## Digital Wireframes & Mockups
