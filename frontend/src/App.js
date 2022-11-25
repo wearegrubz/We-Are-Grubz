@@ -6,12 +6,20 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import SockJsClient from 'react-stomp';
+import {useEffect} from "react";
+
 
 function App() {
+
+  useEffect(() => {
+    let Sock = new SockJS('http://localhost:8080/ws');
+
+  });
+
+
   return (
-
-      <h1>Hello World</h1>
-
+    <h1>hello</h1>
   );
 }
 
