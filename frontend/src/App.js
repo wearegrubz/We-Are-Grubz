@@ -4,18 +4,22 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
+  Link,
 } from "react-router-dom";
 import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
+import SelectTaste from "./pages/SelectTaste";
 
 
 function App() {
   return (
-
-      <>
-        <Home />
-      </>
-
+    <Router>
+        <Navbar />
+        <Routes>
+            <Route path="/" element={<Home />}/>
+            <Route path="/taste" element={<SelectTaste />}/>
+        </Routes>
+    </Router>
   );
 }
 
