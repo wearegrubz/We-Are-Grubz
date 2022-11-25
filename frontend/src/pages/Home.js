@@ -53,6 +53,8 @@ function Home() {
                     <h5>Join</h5>
                 </Button>
             </Form>
+
+            <h3>Or click <Link to='/signup'>here</Link> to create your own group</h3>
         </>
 
     );
