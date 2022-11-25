@@ -1,4 +1,4 @@
-import './App.css';
+// import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {
   BrowserRouter as Router,
@@ -6,20 +6,16 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import SockJsClient from 'react-stomp';
-import {useEffect} from "react";
+import Home from "./pages/Home";
 
 
 function App() {
-
-  useEffect(() => {
-    let Sock = new SockJS('http://localhost:8080/ws');
-
-  });
-
-
   return (
-    <h1>hello</h1>
+
+      <>
+        <Home />
+      </>
+
   );
 }
 

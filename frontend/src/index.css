@@ -1,1 +1,4 @@
-
+@font-face {
+    font-family: 'THEBOLDFONT';
+    src: local('THEBOLDFONT'), url(./fonts/THEBOLDFONT.ttf) format('truetype');
+}

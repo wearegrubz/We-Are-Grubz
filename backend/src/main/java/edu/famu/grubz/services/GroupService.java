@@ -1,19 +1,24 @@
 package edu.famu.grubz.services;
 
-import com.google.gson.Gson;
-import okhttp3.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import okhttp3.HttpUrl;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import io.github.cdimascio.dotenv.Dotenv;
 import edu.famu.grubz.models.Taste;
 import edu.famu.grubz.models.parse.Group;
 import edu.famu.grubz.models.serializable.SerializableGroup;
+import org.apache.http.client.methods.RequestBuilder;
 import org.json.JSONArray;
-import org.json.JSONObject;
 import org.parse4j.ParseObject;
 import org.springframework.stereotype.Service;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.parse4j.Parse;
 import org.parse4j.ParseException;
 import org.parse4j.ParseQuery;
+
 import java.io.IOException;
 import java.util.*;
 
@@ -22,7 +27,7 @@ public class GroupService {
 
     protected final Log logger = LogFactory.getLog(this.getClass()); //used to write to the console
 
-    private Dotenv dotenv = Dotenv.configure().filename("env").load();
+    Dotenv dotenv = Dotenv.configure().filename("env").load();
 
     public ArrayList<Group> retrieveGroups()
     {
@@ -149,26 +154,19 @@ public class GroupService {
         return message;
     }
 
-    private Set<String> analyzeTaste(Group group){
+    public Object retrieveReccomendation(String groupId) {
 
-        Set<String> set = new HashSet<>();
+        String message = null;
 
-        ArrayList<Taste> tastes = group.getTastes();
+        Response response = null;
 
-        for (Object c : tastes) {
+        Object entity = null;
 
-            int start = c.toString().indexOf("[")+1;
-            int end = c.toString().indexOf("]");
-            String taste_str = c.toString().subSequence(start, end).toString();
-            String[] taste_arr = taste_str.split(", ");
-            for(String taste : taste_arr)
-                set.add(taste);
+        ObjectMapper objectMapper = new ObjectMapper();
 
-        }
-        return set;
-    }
+        OkHttpClient client = new OkHttpClient();
 
-    private Request getYelpRequestHttp(Group group, String cuisine) {
+        Group group = this.getGroupById((groupId));
 
         HttpUrl httpUrl = new HttpUrl.Builder()
                 .scheme("https")
@@ -177,10 +175,6 @@ public class GroupService {
                 .addPathSegment("businesses")
                 .addPathSegment("search")
                 .addQueryParameter("location", group.getLocation())
-                .addQueryParameter("radius", Integer.toString(group.getRadius()))
-                .addQueryParameter("limit", Integer.toString(50))
-                .addQueryParameter("categories", cuisine)
-                .addQueryParameter("sort_by", "rating")
                 .build();
 
 
@@ -188,53 +182,15 @@ public class GroupService {
                 .addHeader("Authorization", "Bearer " + dotenv.get("YELP_API_KEY"))
                 .url(httpUrl)
                 .build();
-
-        return requesthttp;
-    }
-
-    public Object retrieveReccomendation(String groupId) {
-
-        Response response = null;
-
-        JSONObject entity = null;
-
-        OkHttpClient client = new OkHttpClient();
-
-        Group group = this.getGroupById((groupId));
-
-        Request requesthttp = null;
-
-        Set<String> taste = this.analyzeTaste(group);
-
-        JSONArray reccomendations = new JSONArray();
-
         try{
-
-            for(String cuisine : taste){
-
-                requesthttp = this.getYelpRequestHttp(group, cuisine);
-
-                response = client.newCall(requesthttp).execute();
-
-                entity = new JSONObject(response.body().string());
-
-                JSONArray c = entity.getJSONArray("businesses");
-
-                for (int i = 0 ; i < c.length(); i++) {
-
-                    JSONObject obj = c.getJSONObject(i);
-                    if (i > 5) break;
-                    reccomendations.put(obj);
-                }
-
-            }
-
+            response = client.newCall(requesthttp).execute();
+            logger.info(response);
+            entity = objectMapper.readValue(response.body().string(), Object.class);
         }catch (IOException e) {
             e.printStackTrace();
         }
 
-        Gson gson = new Gson();
-        return gson.fromJson(reccomendations.toString(), Object.class);
+        return entity;
     }
 
 }
