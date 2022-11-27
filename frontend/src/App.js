@@ -11,7 +11,7 @@ import SelectTaste from "./pages/SelectTaste";
 import CreateGroup from "./pages/CreateGroup";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
-import Group from "./pages/Group"
+import Group from "./pages/Group";
 import Parse from 'parse/react-native.js';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 

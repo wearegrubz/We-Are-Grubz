@@ -1,10 +1,8 @@
 package edu.famu.grubz.controllers;
 
-import edu.famu.grubz.models.Taste;
 import edu.famu.grubz.models.parse.Group;
 import edu.famu.grubz.models.serializable.SerializableGroup;
 import edu.famu.grubz.services.GroupService;
-import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -43,16 +41,10 @@ public class GroupController {
         return groupService.addGroup(group);
     }
 
-    @PostMapping("/add/user/{user-id}/{group-id}")
-    public String appendUser(@PathVariable("user-id") String userId, @PathVariable("group-id") String groupId){
+    @PostMapping("/add/member/{group-id}")
+    public String addMember(@RequestBody Map<String, Object> member, @PathVariable("group-id") String groupId){
 
-        return groupService.addUserToGroup(userId, groupId);
-    }
-
-    @PostMapping("/add/taste/{group-id}")
-    public String appendTaste(@RequestBody Map<String, Object> taste, @PathVariable("group-id") String groupId){
-
-        return groupService.addTasteToGroup(taste, groupId);
+        return groupService.addMemberToGroup(member, groupId);
     }
 
     @GetMapping("/recommendation/{group-id}")
@@ -60,4 +52,5 @@ public class GroupController {
 
         return groupService.retrieveReccomendation(groupId);
     }
+
 }

@@ -1,12 +1,14 @@
 package edu.famu.grubz.services;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
+import edu.famu.grubz.models.Member;
 import okhttp3.*;
 import io.github.cdimascio.dotenv.Dotenv;
-import edu.famu.grubz.models.Taste;
 import edu.famu.grubz.models.parse.Group;
 import edu.famu.grubz.models.serializable.SerializableGroup;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.parse4j.ParseObject;
 import org.springframework.stereotype.Service;
@@ -70,11 +72,10 @@ public class GroupService {
 
         //set the value of each of the fields
         parseGroup.setHostId(group.getHostId());
-        parseGroup.setUserIds(group.getUserIds());
+        parseGroup.setMembers(group.getMembers());
         parseGroup.setLocation(group.getLocation());
         parseGroup.setRadius(group.getRadius());
         parseGroup.setTastes(group.getTastes());
-        parseGroup.setRecommendations(group.getRecommendations());
 
 
         try {
@@ -89,84 +90,66 @@ public class GroupService {
         return message;
     }
 
-    public String addUserToGroup(String userID, String groupID)
+    private JSONArray updateTaste (String selection, Group group){
+
+        ArrayList<String> tastes = group.getTastes();
+
+        int start = selection.indexOf("[")+1;
+        int end = selection.indexOf("]");
+        String selection_str = selection.subSequence(start, end).toString();
+        String[] selection_arr = selection_str.split(", ");
+        for(String c : selection_arr){
+            if(tastes.contains(c) == false){
+                tastes.add(c);
+            }
+        }
+
+        JSONArray list = new JSONArray();
+        for(Object s : tastes)
+            list.put(s);
+
+        return list;
+    }
+
+    public String addMemberToGroup(Map<String, Object> member, String groupID)
     {
         String message = null; //message we will return to the user
 
         Group group = this.getGroupById(groupID);
 
-        ArrayList<String> userIds = group.getUserIds();
+        String selection = member.get("selection").toString();
 
-        userIds.add(userID);
+        JSONArray updated_taste = this.updateTaste(selection, group);
+
+        ArrayList<Member> members = group.getMembers();
+
+        JSONArray items = new JSONArray();
+
+        for(Object c : members)
+            items.put(c);
+
+        items.put(member);
 
         ParseQuery<Group> query = ParseQuery.getQuery(Group.class);
 
         try {
             Group gp = query.get(groupID);
-            gp.put("userIds", userIds);
+            gp.put("tastes", updated_taste);
+            gp.put("members", items);
             gp.save();
 
-            message = "User added to group";
+            message = "Member added to group";
 
         } catch (ParseException e) {
             e.printStackTrace();
-            message = "Error adding user to group. " + e.getMessage(); // failure message
+            message = "Error adding member to group. " + e.getMessage(); // failure message
         }
 
         return message;
     }
 
-    public String addTasteToGroup(Map<String, Object> taste, String groupID)
-    {
-        String message = null; //message we will return to the user
 
-        ParseObject gp = null;
 
-        Group group = this.getGroupById(groupID);
-
-        ArrayList<Taste> tastes = group.getTastes();
-
-        JSONArray items = new JSONArray();
-
-        for(Object c : tastes)
-            items.put(c);
-
-        items.put(taste);
-
-        ParseQuery<Group> query = ParseQuery.getQuery(Group.class);
-
-        try {
-            gp = query.get(groupID);
-            gp.put("tastes", items);
-            gp.save();
-            message = "Taste added to group";
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-            message = "Error adding taste to group. " + e.getMessage(); // failure message
-        }
-
-        return message;
-    }
-
-    private Set<String> analyzeTaste(Group group){
-
-        Set<String> set = new HashSet<>();
-
-        ArrayList<Taste> tastes = group.getTastes();
-
-        for (Object c : tastes) {
-
-            int start = c.toString().indexOf("[")+1;
-            int end = c.toString().indexOf("]");
-            String taste_str = c.toString().subSequence(start, end).toString();
-            String[] taste_arr = taste_str.split(", ");
-            for(String taste : taste_arr)
-                set.add(taste);
-
-        }
-        return set;
-    }
 
     private Request getYelpRequestHttp(Group group, String cuisine) {
 
@@ -192,6 +175,20 @@ public class GroupService {
         return requesthttp;
     }
 
+    private JSONArray shuffleReccomendations (JSONArray array) throws JSONException {
+        // Implementing Fisher–Yates shuffle
+        Random rnd = new Random();
+        for (int i = array.length() - 1; i >= 0; i--)
+        {
+            int j = rnd.nextInt(i + 1);
+            // Simple swap
+            Object object = array.get(j);
+            array.put(j, array.get(i));
+            array.put(i, object);
+        }
+        return array;
+    }
+
     public Object retrieveReccomendation(String groupId) {
 
         Response response = null;
@@ -204,7 +201,7 @@ public class GroupService {
 
         Request requesthttp = null;
 
-        Set<String> taste = this.analyzeTaste(group);
+        ArrayList<String> taste = group.getTastes();
 
         JSONArray reccomendations = new JSONArray();
 
@@ -233,8 +230,12 @@ public class GroupService {
             e.printStackTrace();
         }
 
+        reccomendations = this.shuffleReccomendations(reccomendations);
+
         Gson gson = new Gson();
         return gson.fromJson(reccomendations.toString(), Object.class);
     }
 
 }
+
+

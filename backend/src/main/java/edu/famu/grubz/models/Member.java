@@ -10,13 +10,13 @@ import java.util.ArrayList;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Taste {
-    private String userId;
-    private ArrayList<String> cuisines;
+public class Member {
+    private String name;
+    private ArrayList<String> selection;
     public JSONObject getJSONObject(){
         JSONObject obj = new JSONObject();
-        obj.append("userId", userId);
-        obj.append("cuisines", cuisines);
+        obj.append("name", name);
+        obj.append("selection", selection);
         return obj;
     }
 }
