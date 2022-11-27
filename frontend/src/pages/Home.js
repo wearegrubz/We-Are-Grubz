@@ -1,15 +1,13 @@
 import './Home.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    Link, useNavigate
+    Link,
+    useNavigate
 } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import {useRef, useState} from "react";
+import {useState} from "react";
 
 
 function Home() {
@@ -50,7 +48,7 @@ function Home() {
                 <Button variant="primary" type="button" onClick={() => {
                     navigate('/taste', {state: {name: values["full_name"], groupId: values["group_id"]}})
                 }}>
-                    <h5>Join</h5>
+                    <h5>Next</h5>
                 </Button>
             </Form>
 

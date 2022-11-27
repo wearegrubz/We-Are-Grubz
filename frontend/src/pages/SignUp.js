@@ -1,5 +1,9 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import {
+    Link,
+    useNavigate
+} from "react-router-dom";
 import {useState} from "react";
 
 function SignUp() {
@@ -10,6 +14,8 @@ function SignUp() {
                   password: ""
         }
     );
+
+    const navigate = useNavigate()
 
     const doUserSignUp = function () {
         // Note that this values come from state variables that we've declared before
@@ -58,7 +64,10 @@ function SignUp() {
                               onChange={e => setState(prevValues => ({...prevValues, password : e.target.value}))}
                               placeholder="password" />
             </Form.Group>
-            <Button variant="primary" type="button" onClick={() => doUserSignUp()}>
+            <Button variant="primary" type="button" onClick={() => {
+                doUserSignUp();
+                navigate("/signin")
+            }}>
                 <h5>Sign Up</h5>
             </Button>
         </Form>
