@@ -12,9 +12,6 @@ function Group() {
 
     const [recommendations, setRecommendations] = useState([]);
 
-    // BUG: useEffect stuck in infinite loop
-
-    /*
     useEffect(() => {
 
         const member = {
@@ -30,8 +27,9 @@ function Group() {
             )
         }
 
-        const getMembers = () => {
-             axios.get('http://localhost:8080/api/v1/group/find/'+groupId)
+        const getMembers = async () => {
+            let new_members = []
+              await axios.get('http://localhost:8080/api/v1/group/find/'+groupId)
                 .then(response => {
                     setMembers(response.data.members)
                 })
@@ -40,25 +38,25 @@ function Group() {
         const getRecommendations = async () => {
             await axios.get('http://localhost:8080/api/v1/group/recommendation/'+groupId)
                 .then(response => {
-                    setRecommendations(response.data)
+                    setRecommendations( response.data)
                 })
         }
 
         updateMembers()
+        getRecommendations()
         getMembers()
-        //getRecommendations()
+        console.log(recommendations)
 
-        console.log(members)
+    }, []);
 
-    });
-
-     */
 
     return (
         <>
             <h1>Name: {name}</h1>
             <h1>Group ID: {groupId}</h1>
             <h1>Selections: {selections}</h1>
+            <h1>Members: {members.map(member => <p>{member.name}</p>)}</h1>
+            <h1>Reccomendations: {recommendations.map(rec => <p>{rec.name}</p>)}</h1>
         </>
     );
 }
