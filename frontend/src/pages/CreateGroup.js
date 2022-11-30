@@ -47,35 +47,42 @@ function CreateGroup() {
 
     return (
         <Form>
-            <h1> Create a group </h1>
-            <h3>Whats your name?</h3>
-            <Form.Group className="mb-3" controlId="formBasicName">
-                <Form.Control
-                    type="text"
-                    onChange={onNameChange}
-                    placeholder="Name" />
-            </Form.Group>
-            <h3>Whats the location of your group?</h3>
-            <Form.Group className="mb-3" controlId="formBasicUsername">
-                <Form.Control type="text"
-                              onChange={onLocationChange}
-                              placeholder="Location" />
-            </Form.Group>
-            <Button variant="primary" type="button" onClick={handleGroup}>
-                <h5>Generate Group ID</h5>
-            </Button>
+            <div class="px-5 pt-5 mx-5">
+                <h1> Create a group </h1>
+                <div >
+                    <label htmlFor="exampleInputEmail1" className="form-label">Whats your name?</label>
+                    <Form.Group className="mb-3" controlId="formBasicName">
+                        <Form.Control
+                            type="text"
+                            onChange={onNameChange}
+                            placeholder="Vanessa " />
+                    </Form.Group>
+                </div>
 
-            <h1> Your group ID: {groupId}</h1>
+                <div>
+                    <label htmlFor="exampleInputEmail1" className="form-label">Where are y'all located?</label>
+                    <Form.Group className="mb-3" controlId="formBasicUsername">
+                        <Form.Control type="text"
+                                      onChange={onLocationChange}
+                                      placeholder="Tallahassee" />
+                    </Form.Group>
+                </div>
 
-            {groupId ?
-                <Button variant="primary" type="button" onClick={() => {
-                    navigate('/taste', {state: {"name": name, "groupId": groupId, isHost: false}})
-                }}>
-                    <h5>Select taste</h5>
-                </Button> :
-                ""
-            }
+                <Button variant="primary" type="button" onClick={handleGroup}>
+                    <b>Generate Group</b>
+                </Button>
 
+                <h1> Your group ID: {groupId}</h1>
+
+                {groupId ?
+                    <Button variant="primary" type="button" onClick={() => {
+                        navigate('/taste', {state: {"name": name, "groupId": groupId, isHost: false}})
+                    }}>
+                        <b>Select taste</b>
+                    </Button> :
+                    ""
+                }
+            </div>
         </Form>
 
     );
