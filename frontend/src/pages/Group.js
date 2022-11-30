@@ -1,5 +1,6 @@
 import {useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
+import MemberList from "../components/MemberList";
 import axios from 'axios';
 
 function Group() {
@@ -19,8 +20,8 @@ function Group() {
             "selections": selections
         };
 
-        const updateMembers = () => {
-            axios.post('http://localhost:8080/api/v1/group/add/member/'+groupId, member)
+        const updateMembers = async () => {
+            await axios.post('http://localhost:8080/api/v1/group/add/member/'+groupId, member)
                 .then(response =>{
                     console.log(response)
                 }
@@ -28,23 +29,27 @@ function Group() {
         }
 
         const getMembers = async () => {
-            let new_members = []
-              await axios.get('http://localhost:8080/api/v1/group/find/'+groupId)
+               await axios.get('http://localhost:8080/api/v1/group/find/'+groupId)
                 .then(response => {
-                    setMembers(response.data.members)
+                    response.data.members.map(member => {
+                        setMembers(OldValue => [...OldValue, member])
+                    })
                 })
         }
 
         const getRecommendations = async () => {
-            await axios.get('http://localhost:8080/api/v1/group/recommendation/'+groupId)
+             await axios.get('http://localhost:8080/api/v1/group/recommendation/'+groupId)
                 .then(response => {
-                    setRecommendations( response.data)
+                    response.data.map(rec => {
+                        setRecommendations(OldValue => [...OldValue, rec])
+                    })
                 })
         }
 
-        updateMembers()
-        getRecommendations()
-        getMembers()
+        getMembers().then(() =>
+            getRecommendations()
+        )
+
         console.log(recommendations)
 
     }, []);
@@ -52,10 +57,8 @@ function Group() {
 
     return (
         <>
-            <h1>Name: {name}</h1>
             <h1>Group ID: {groupId}</h1>
-            <h1>Selections: {selections}</h1>
-            <h1>Members: {members.map(member => <p>{member.name}</p>)}</h1>
+            <MemberList members={members} className="border"/>
             <h1>Reccomendations: {recommendations.map(rec => <p>{rec.name}</p>)}</h1>
         </>
     );

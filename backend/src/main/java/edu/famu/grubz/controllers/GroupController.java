@@ -31,22 +31,26 @@ public class GroupController {
         return groups;
     }
 
+    @CrossOrigin(origins="*")
     @GetMapping("/find/{id}")
     public SerializableGroup getGroupById(@PathVariable String id){
         return groupService.getGroupById(id).getSerializable();
     }
 
+    @CrossOrigin(origins="*")
     @PostMapping("/")
     public String createGroup(@RequestBody SerializableGroup group){
         return groupService.addGroup(group);
     }
 
+    @CrossOrigin(origins="*")
     @PostMapping("/add/member/{group-id}")
     public String addMember(@RequestBody Map<String, Object> member, @PathVariable("group-id") String groupId){
 
         return groupService.addMemberToGroup(member, groupId);
     }
 
+    @CrossOrigin(origins="*")
     @GetMapping("/recommendation/{group-id}")
     public Object getRecommendation(@PathVariable("group-id") String groupId){
 

@@ -87,7 +87,7 @@ public class GroupService {
             // set the error return message
             message = "Error creating group. " + e.getMessage();
         }
-        return message;
+        return parseGroup.getObjectId();
     }
 
     private JSONArray updateTaste (String selection, Group group){
@@ -117,7 +117,7 @@ public class GroupService {
 
         Group group = this.getGroupById(groupID);
 
-        String selection = member.get("selection").toString();
+        String selection = member.get("selections").toString();
 
         JSONArray updated_taste = this.updateTaste(selection, group);
 
@@ -131,6 +131,8 @@ public class GroupService {
         items.put(member);
 
         ParseQuery<Group> query = ParseQuery.getQuery(Group.class);
+
+        logger.info(items);
 
         try {
             Group gp = query.get(groupID);
@@ -201,6 +203,8 @@ public class GroupService {
 
         Request requesthttp = null;
 
+        Set<String> seen = new HashSet<>();
+
         ArrayList<String> taste = group.getTastes();
 
         JSONArray reccomendations = new JSONArray();
@@ -217,11 +221,23 @@ public class GroupService {
 
                 JSONArray c = entity.getJSONArray("businesses");
 
+                int max = 5;
+
                 for (int i = 0 ; i < c.length(); i++) {
 
                     JSONObject obj = c.getJSONObject(i);
-                    if (i > 5) break;
+
+                    if (seen.contains(obj.get("name").toString())){
+                        max = max + 1;
+                        continue;
+                    }
+
+                    if (i > max) break;
+
                     reccomendations.put(obj);
+
+                    logger.info(obj.get("name").toString());
+                    seen.add(obj.get("name").toString());
                 }
 
             }

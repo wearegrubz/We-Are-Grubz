@@ -12,11 +12,11 @@ import java.util.ArrayList;
 @NoArgsConstructor
 public class Member {
     private String name;
-    private ArrayList<String> selection;
+    private ArrayList<String> selections;
     public JSONObject getJSONObject(){
         JSONObject obj = new JSONObject();
         obj.append("name", name);
-        obj.append("selection", selection);
+        obj.append("selections", selections);
         return obj;
     }
 }

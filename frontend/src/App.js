@@ -23,20 +23,20 @@ const PARSE_JAVASCRIPT_ID = process.env.REACT_APP_PARSE_JAVASCRIPT_ID;
 Parse.initialize(PARSE_APPLICATION_ID, PARSE_JAVASCRIPT_ID);
 Parse.serverURL = PARSE_HOST_URL;
 
-
 function App() {
   return (
-    <Router>
-        <Navbar />
-        <Routes>
-            <Route path="/" element={<Home />}/>
-            <Route path="/taste" element={<SelectTaste />}/>
-            <Route path="/create" element={<CreateGroup />}/>
-            <Route path="/signup" element={<SignUp />}/>
-            <Route path="/signin" element={<SignIn />}/>
-            <Route path="/group" element={<Group />}/>
-        </Routes>
-    </Router>
+          <Router>
+              <Navbar />
+              <Routes>
+                  <Route path="/" element={<Home />}/>
+                  <Route path="/taste" element={<SelectTaste />}/>
+                  <Route path="/create" element={<CreateGroup />}/>
+                  <Route path="/signup" element={<SignUp />}/>
+                  <Route path="/signin" element={<SignIn />}/>
+                  <Route path="/group" element={<Group />}/>
+              </Routes>
+          </Router>
+
   );
 }
 
