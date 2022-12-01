@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 
 
-function GroupID () {
+function GroupId () {
     const {state} = useLocation();
 
     const { name, groupId } = state;
@@ -49,4 +49,4 @@ return (
 
 }
 
-export default GroupID;
+export default GroupId;

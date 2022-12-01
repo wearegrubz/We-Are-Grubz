@@ -25,9 +25,9 @@ function Member(props) {
 
     return (
         <>
-            <div class="container mb-3">
+            <div class="container border-top mt-2">
                 <div className="row">
-                    <div className="col-sm-4">
+                    <div className="col-sm-4 h-50">
                         <TiUserOutline class=" mt-1 border border-warning rounded-circle rounded-lg"
                                        style={{height: "40%", width: "60%"}}/>
                     </div>
@@ -40,7 +40,11 @@ function Member(props) {
                                 return (
                                     <div className="row" key={row}>
                                         {rows[row].map(selection => {
-                                            return <span className="badge rounded-pill text-bg-dark mt-2 mx-1" style={{width: "30%", height: "60%", color: "#E76252 !important"}}>{selection}</span>
+                                            return(
+                                            <div className="col-sm-6">
+                                                <span className="badge rounded-pill text-bg-dark mt-2 mx-1" style={{width: "100%", height: "60%", color: "#E76252 !important"}}>{selection}</span>
+                                            </div>
+                                            )
                                         })}
                                     </div>
                                 )
