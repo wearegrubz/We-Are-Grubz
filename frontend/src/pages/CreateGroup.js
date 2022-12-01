@@ -41,7 +41,12 @@ function CreateGroup() {
                 )
         }
 
-        addGroup()
+        addGroup().then( () => {
+
+            console.log(groupId)
+
+            }
+        )
 
     }
 
