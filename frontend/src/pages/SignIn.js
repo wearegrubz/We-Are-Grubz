@@ -1,6 +1,5 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Parse from 'parse/react-native.js';
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
@@ -17,7 +16,7 @@ function SignIn() {
     const [currentUser, setCurrentUser] = useState(null);
 
     const navigate = useNavigate()
-
+    /*
     const doUserLogIn = async function () {
         const currentUser = await Parse.User.currentAsync();
         console.log(currentUser)
@@ -65,6 +64,8 @@ function SignIn() {
             </Button>
         </Form>
     );
+
+     */
 }
 
 export default SignIn;

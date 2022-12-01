@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
+import Selection from "../components/Selection";
 
 function SelectTaste() {
 
@@ -54,10 +55,25 @@ function SelectTaste() {
 
     return (
         <>
-            <SelectionList handleSelect={handleSelect}/>
-            <Button variant="primary" type="button" onClick={() => handleJoin()}>
-                <h5>Join</h5>
-            </Button>
+            <div className="container-fluid" style={{height: "91vh", backgroundImage: 'url("/assets/images/home_background.jpg")', backgroundSize: "cover"}}>
+                <div className="row h-100">
+                    <div className="col-sm-12 my-auto">
+                        <div className="card bg-light justify-content-center px-5 py-2 w-50" style={{margin: "auto"}}>
+                            <br/>
+                            <h1>Select Your Taste</h1>
+                            <br/>
+                            <h4>Watcha feelin?</h4>
+                            {/*<br/>*/}
+                            <SelectionList handleSelect={handleSelect}/>
+                            <br/>
+                            <Button variant="primary" type="button" onClick={() => handleJoin()}>
+                                <h5 style={{color: "#ECD6AB"}}>Join</h5>
+                            </Button>
+                            <br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
 
     );

@@ -12,6 +12,7 @@ import CreateGroup from "./pages/CreateGroup";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import Group from "./pages/Group";
+/*
 import Parse from 'parse/react-native.js';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -22,6 +23,8 @@ const PARSE_HOST_URL = 'https://parseapi.back4app.com/';
 const PARSE_JAVASCRIPT_ID = process.env.REACT_APP_PARSE_JAVASCRIPT_ID;
 Parse.initialize(PARSE_APPLICATION_ID, PARSE_JAVASCRIPT_ID);
 Parse.serverURL = PARSE_HOST_URL;
+
+ */
 
 function App() {
   return (
