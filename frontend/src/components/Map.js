@@ -12,9 +12,14 @@ function Map(props) {
         googleMapsApiKey: 'AIzaSyDpmYDB5DFib42nQx1-__65N5RpouBqSdY'
     });
 
+    const style = {
+        backgroundColor: "#ECD6AB"
+
+    }
+
     return (
         <>
-            {isLoaded ? <GoogleMap zoom={15} center={center} mapContainerStyle={{height: "100%", width: "100%"}}>
+            {isLoaded ? <GoogleMap zoom={15} center={center} style={style} mapContainerStyle={{height: "100%", width: "100%"}}>
                     <Marker position={center} />
                 </GoogleMap>:
                 <h1>Loading...</h1>

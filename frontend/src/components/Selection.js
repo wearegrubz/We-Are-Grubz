@@ -1,4 +1,5 @@
 import Form from "react-bootstrap/Form";
+import './Selection.css'
 
 function Selection(props) {
 
