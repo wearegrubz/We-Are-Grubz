@@ -2,21 +2,6 @@
 /*    margin: 0 0 0 0*/
 /*}*/
 
-h1 {
-    font-family: THEBOLDFONT, sans-serif;
-    color: #202020;
-}
-
-Button, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-    background-color: #E76252 !important;
-}
-
-.link {
-    color: #E76252 !important;
-    text-decoration: none !important;
-}
-
-
 /*.container {*/
 /*    margin: 100px*/
 /*}*/

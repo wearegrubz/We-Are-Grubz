@@ -1,4 +1,39 @@
+div {
+    font-family: Altone, sans-serif;
+    color: #202020;
+    line-height: 30px;
+}
+
+h1 {
+    font-family: Hand_Of_Sean, sans-serif;
+    color: #5B1D1D;
+}
+
+Button, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #E76252 !important;
+}
+
+.link {
+    color: #E76252 !important;
+    text-decoration: none !important;
+}
+
+@font-face {
+    font-family: 'Hand_Of_Sean';
+    src: local('Hand_Of_Sean'), url(./fonts/Hand_Of_Sean_Demo.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Altone';
+    src: local('Altone'), url(./fonts/AltoneTrial-Regular.ttf) format('truetype');
+}
+
 @font-face {
     font-family: 'THEBOLDFONT';
     src: local('THEBOLDFONT'), url(./fonts/THEBOLDFONT.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'GABRWFFR';
+    src: local('GABRWFFR'), url(./fonts/GABRWFFR.TTF) format('truetype');
 }

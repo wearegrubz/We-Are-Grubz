@@ -16,11 +16,30 @@ function SelectionList(props) {
     ]
 
     return (
+        <>
+            <div className="row">
+                <div className="col">
+                    {
+                        options.slice(0, 5).map((option, idx) => {
+                            return (
+                                <Selection handleSelect={props.handleSelect} option={option} key={idx}/>
+                            )
+                        })
+                    }
+                </div>
+                <div className="col">
+                    {
+                        options.slice(5, 10).map((option, idx) => {
+                            return (
+                                <Selection handleSelect={props.handleSelect} option={option} key={idx}/>
+                            )
+                        })
+                    }
+                </div>
+            </div>
+        </>
 
-        options.map((option, idx) => {
-                return <Selection handleSelect={props.handleSelect} option={option} key={idx}/>
-            }
-        )
+
     );
 }
 

@@ -4,12 +4,12 @@ function Selection(props) {
 
     return (
         <Form.Check
-            inline
             label={props.option}
             name={props.option}
             type="checkbox"
-            id={`inline-checkbox-1`}
+            id={`checkbox`}
             onChange={e => {props.handleSelect(e)}}
+            style={{minHeight: "2.5rem", paddingLeft: "3rem", fontSize: "18px"}}
         />
     );
 }
