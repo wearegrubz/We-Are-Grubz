@@ -14,6 +14,7 @@ import SignIn from "./pages/SignIn";
 import Group from "./pages/Group";
 import Parse from 'parse/react-native.js';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import GroupID from "./pages/GroupID";
 
 Parse.setAsyncStorage(AsyncStorage);
 
@@ -34,6 +35,7 @@ function App() {
                   <Route path="/signup" element={<SignUp />}/>
                   <Route path="/signin" element={<SignIn />}/>
                   <Route path="/group" element={<Group />}/>
+                  <Route path="groupid" element={<GroupID/>}/>
               </Routes>
           </Router>
 

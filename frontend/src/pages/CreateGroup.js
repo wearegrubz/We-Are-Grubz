@@ -7,6 +7,7 @@ import {
     Link,
     useNavigate
 } from "react-router-dom";
+import group from "./Group";
 
 function CreateGroup() {
     const [name, setName] = useState("");
@@ -23,8 +24,14 @@ function CreateGroup() {
 
     const navigate = useNavigate()
 
-    const handleGroup = () => {
+    useEffect( () => {
+        if (groupId){
+            navigate('/groupid', {state: {"name": name, "groupId": groupId, isHost: false}})
+        }
 
+    }, [groupId])
+
+    const handleGroup = () => {
         const group = {
             "hostId": "N/A",
             "location": location,
@@ -33,9 +40,9 @@ function CreateGroup() {
             "members": []
         };
 
-        const addGroup = async () => {
-            await axios.post('http://localhost:8080/api/v1/group/', group)
-                .then(response =>{
+        const addGroup = () => {
+             axios.post('http://localhost:8080/api/v1/group/', group)
+                .then(response => {
                         setGroupId(response.data)
                     }
                 )
@@ -49,13 +56,13 @@ function CreateGroup() {
         <Form>
             <div className="container-fluid" style={{
                  height: "86vh",
-                backgroundImage: 'url("/assets/images/Friends_toasting.jpeg")',
+                backgroundImage: 'url("/assets/images/food_line_art_final.webp")',
                 backgroundSize: "cover",
                 paddingTop: 150
             }}>
 
-            <div className="col-sm-12 my-auto card bg-light justify-content-center"  >
-            <div class="px-5 pt-5 mx-5">
+            <div className="col-sm-12 card justify-content-center mx-auto w-50"  >
+            <div class="mx-5 my-5">
                 <h1> Create a group </h1>
                 <div >
                     <label htmlFor="exampleInputEmail1" className="form-label">Whats your name?</label>
@@ -63,7 +70,7 @@ function CreateGroup() {
                         <Form.Control
                             type="text"
                             onChange={onNameChange}
-                            placeholder="Vanessa " />
+                            placeholder="Name" />
                     </Form.Group>
                 </div>
 
@@ -72,18 +79,22 @@ function CreateGroup() {
                     <Form.Group className="mb-3" controlId="formBasicUsername">
                         <Form.Control type="text"
                                       onChange={onLocationChange}
-                                      placeholder="Tallahassee" />
+                                      placeholder="City" />
                     </Form.Group>
                 </div>
 
-                <Button variant="primary" type="button" onClick={handleGroup}>
+                <Button variant="primary" type="button" onClick={
+                    handleGroup
+                  }
+                >
                     <b>Generate Group</b>
                 </Button>
 
 
                 {groupId ?
-                    <h1> Your group ID: {groupId}</h1>:
+                    <h1> <br></br>Your group ID: {groupId}</h1>:
                     ""
+
                 }
                 {groupId ?
 
