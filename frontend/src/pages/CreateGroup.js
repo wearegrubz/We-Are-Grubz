@@ -47,6 +47,14 @@ function CreateGroup() {
 
     return (
         <Form>
+            <div className="container-fluid" style={{
+                 height: "86vh",
+                backgroundImage: 'url("/assets/images/Friends_toasting.jpeg")',
+                backgroundSize: "cover",
+                paddingTop: 150
+            }}>
+
+            <div className="col-sm-12 my-auto card bg-light justify-content-center"  >
             <div class="px-5 pt-5 mx-5">
                 <h1> Create a group </h1>
                 <div >
@@ -72,16 +80,23 @@ function CreateGroup() {
                     <b>Generate Group</b>
                 </Button>
 
-                <h1> Your group ID: {groupId}</h1>
 
                 {groupId ?
+                    <h1> Your group ID: {groupId}</h1>:
+                    ""
+                }
+                {groupId ?
+
+
                     <Button variant="primary" type="button" onClick={() => {
                         navigate('/taste', {state: {"name": name, "groupId": groupId, isHost: false}})
                     }}>
                         <b>Select taste</b>
-                    </Button> :
+                    </Button>:
                     ""
                 }
+                </div>
+            </div>
             </div>
         </Form>
 
