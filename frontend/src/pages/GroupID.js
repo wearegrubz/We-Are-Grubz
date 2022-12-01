@@ -18,7 +18,7 @@ function GroupID () {
 
 return (
     <div className="container-fluid" style={{
-        height: "86vh",
+        height: "90vh",
         backgroundImage: 'url("/assets/images/food_line_art_final.webp")',
         backgroundSize: "cover"
     }}>
@@ -26,9 +26,9 @@ return (
             <div className="col-sm-12 my-auto ">
                 <div className="card bg-light justify-content-center px-5 py-5 w-50 text-center" style={{margin: "auto"}}>
                     <h1 style={{color: "#A03A3A"}}>Get Ready to Grub!<br></br></h1>
-                    <h3 style={{color: "#EB1D1D"}}>Here's your Group ID:</h3>
+                    <h3>Here's your Group ID:</h3>
                     <div className="card bg-light justify-content-center px-3 py-5" >
-                        <h1>{groupId}</h1>
+                        <h2>{groupId}</h2>
                     </div>
                     <h3 className="align-content-center">
                         Share this with your friends to<br></br>
