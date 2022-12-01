@@ -1,8 +1,13 @@
+import Recommendation from "./Recommendation";
 
 function RecommendationList(props) {
 
     return (
-        <><h1>Hi</h1></>
+        <>
+            {props.recs.map((rec, idx) =>
+                <Recommendation handleClick={props.handleClick} idx={idx} rec={rec}/>
+            )}
+        </>
     );
 }
 

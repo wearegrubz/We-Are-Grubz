@@ -1,0 +1,10 @@
+div .parentDiv {
+    min-height: 40vh;
+    max-height: 40vh;
+    overflow-y: scroll;
+}
+
+div .parentContainer{
+    max-height: 100% !important;
+    display: block;
+}
