@@ -9,7 +9,7 @@ h1 {
     color: #5B1D1D;
 }
 
-Button, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+#btn, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
     background-color: #E76252 !important;
 }
 

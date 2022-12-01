@@ -66,8 +66,8 @@ function SelectTaste() {
                             {/*<br/>*/}
                             <SelectionList handleSelect={handleSelect}/>
                             <br/>
-                            <Button variant="primary" type="button" onClick={() => handleJoin()}>
-                                <h5 style={{color: "#ECD6AB"}}>Join</h5>
+                            <Button id="btn" variant="primary" type="button" onClick={() => handleJoin()}>
+                                <div style={{color: "#ECD6AB"}}>Add Your Taste</div>
                             </Button>
                             <br/>
                         </div>

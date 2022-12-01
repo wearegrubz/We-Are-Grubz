@@ -61,14 +61,14 @@ function CreateGroup() {
                               onChange={onLocationChange}
                               placeholder="Location" />
             </Form.Group>
-            <Button variant="primary" type="button" onClick={handleGroup}>
+            <Button id="btn" variant="primary" type="button" onClick={handleGroup}>
                 <h5>Generate Group ID</h5>
             </Button>
 
             <h1> Your group ID: {groupId}</h1>
 
             {groupId ?
-                <Button variant="primary" type="button" onClick={() => {
+                <Button id="btn" variant="primary" type="button" onClick={() => {
                     navigate('/taste', {state: {"name": name, "groupId": groupId, isHost: false}})
                 }}>
                     <h5>Select taste</h5>

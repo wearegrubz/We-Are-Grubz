@@ -5,3 +5,7 @@
 /*.container {*/
 /*    margin: 100px*/
 /*}*/
+
+#btn, .btn-primary:hover, .btn-primary:active, .btn-primary:visited #btn {
+    background-color: #E76252 !important;
+}

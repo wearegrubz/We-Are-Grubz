@@ -1,0 +1,10 @@
+.form-check-input{
+    width: 1.3em;
+    height: 1.3em;
+    margin-right: 1em
+}
+
+.form-check-input:checked {
+    background-color: #96CC90;
+    border-color: #96CC90;
+}

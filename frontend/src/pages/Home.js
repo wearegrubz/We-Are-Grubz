@@ -10,6 +10,7 @@ import Form from 'react-bootstrap/Form';
 import {useState} from "react";
 
 
+
 function Home() {
 
     const [values, setValues] = useState({"full_name": "", "group_id": ""});
@@ -62,7 +63,7 @@ function Home() {
                                         }
                                     })
                                 }}>
-                                    <h5 style={{color: "#ECD6AB"}}>Join Grubz Group</h5>
+                                    <div style={{color: "#ECD6AB"}}>Join Grubz Group</div>
                                 </Button>
                             </div>
 
