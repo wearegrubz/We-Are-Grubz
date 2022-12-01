@@ -74,7 +74,7 @@ function Group() {
                             </div>
                             <div className="row parentDiv">
                                 <div className="col-md-12 h-50">
-                                    <RecommendationList handleClick={handleClick} recs={recommendations}/>
+                                    <RecommendationList handleClick={handleClick} recs={recommendations} selected={selected}/>
 
                                 </div>
                             </div>

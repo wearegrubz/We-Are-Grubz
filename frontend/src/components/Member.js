@@ -46,15 +46,10 @@ function Member(props) {
                                 )
                             })}
                         </div>
-
                     </div>
                 </div>
             </div>
-
-
         </>
-
-
     );
 }
 
