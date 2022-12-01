@@ -7,6 +7,7 @@ import {
     Link,
     useNavigate
 } from "react-router-dom";
+import group from "./Group";
 
 function CreateGroup() {
     const [name, setName] = useState("");
@@ -23,8 +24,14 @@ function CreateGroup() {
 
     const navigate = useNavigate()
 
-    const handleGroup = () => {
+    useEffect( () => {
+        if (groupId){
+            navigate('/groupid', {state: {"name": name, "groupId": groupId, isHost: false}})
+        }
 
+    }, [groupId])
+
+    const handleGroup = () => {
         const group = {
             "hostId": "N/A",
             "location": location,
@@ -33,51 +40,86 @@ function CreateGroup() {
             "members": []
         };
 
-        const addGroup = async () => {
-            await axios.post('http://localhost:8080/api/v1/group/', group)
-                .then(response =>{
+        const addGroup = () => {
+             axios.post('http://localhost:8080/api/v1/group/', group)
+                .then(response => {
                         setGroupId(response.data)
                     }
                 )
         }
 
-        addGroup()
+        addGroup().then( () => {
+
+            console.log(groupId)
+
+            }
+        )
 
     }
 
     return (
-        <Form>
-            <h1> Create a group </h1>
-            <h3>Whats your name?</h3>
-            <Form.Group className="mb-3" controlId="formBasicName">
-                <Form.Control
-                    type="text"
-                    onChange={onNameChange}
-                    placeholder="Name" />
-            </Form.Group>
-            <h3>Whats the location of your group?</h3>
-            <Form.Group className="mb-3" controlId="formBasicUsername">
-                <Form.Control type="text"
-                              onChange={onLocationChange}
-                              placeholder="Location" />
-            </Form.Group>
-            <Button id="btn" variant="primary" type="button" onClick={handleGroup}>
-                <h5>Generate Group ID</h5>
-            </Button>
+        <div className="container-fluid" style={{
+            height: "90vh",
+            backgroundImage: 'url("/assets/images/food_line_art_final.webp")',
+            backgroundSize: "cover",
 
-            <h1> Your group ID: {groupId}</h1>
+        }}>
+            <div className="row h-100">
+                <div className="col-sm-12 my-auto ">
+                    <Form>
+                        <div className="col-sm-12 card justify-content-center mx-auto w-50"  >
+                            <div class="mx-5 my-5">
+                                <h1> Create a group </h1>
+                                <div >
+                                    <label htmlFor="exampleInputEmail1" className="form-label">Whats your name?</label>
+                                    <Form.Group className="mb-3" controlId="formBasicName">
+                                        <Form.Control
+                                            type="text"
+                                            onChange={onNameChange}
+                                            placeholder="Name" />
+                                    </Form.Group>
+                                </div>
 
-            {groupId ?
-                <Button id="btn" variant="primary" type="button" onClick={() => {
-                    navigate('/taste', {state: {"name": name, "groupId": groupId, isHost: false}})
-                }}>
-                    <h5>Select taste</h5>
-                </Button> :
-                ""
-            }
+                                <div>
+                                    <label htmlFor="exampleInputEmail1" className="form-label">Where are y'all located?</label>
+                                    <Form.Group className="mb-3" controlId="formBasicUsername">
+                                        <Form.Control type="text"
+                                                      onChange={onLocationChange}
+                                                      placeholder="City" />
+                                    </Form.Group>
+                                </div>
 
-        </Form>
+                                <Button variant="primary" type="button" onClick={
+                                    handleGroup
+                                }
+                                >
+                                    <b>Generate Group</b>
+                                </Button>
 
+
+                                {groupId ?
+                                    <h1> <br></br>Your group ID: {groupId}</h1>:
+                                    ""
+
+                                }
+                                {groupId ?
+
+
+                                    <Button variant="primary" type="button" onClick={() => {
+                                        navigate('/taste', {state: {"name": name, "groupId": groupId, isHost: false}})
+                                    }}>
+                                        <b>Select taste</b>
+                                    </Button>:
+                                    ""
+                                }
+                            </div>
+                        </div>
+
+                    </Form>
+                </div>
+            </div>
+
+    </div>
     );
 }
 

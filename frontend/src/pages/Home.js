@@ -30,7 +30,7 @@ function Home() {
     return (
 
         <>
-            <div class="container-fluid" style={{height: "91vh", backgroundImage: 'url("/assets/images/home_background.jpg")', backgroundSize: "cover"}} >
+            <div class="container-fluid" style={{height: "90vh", backgroundImage: 'url("/assets/images/home_background.jpg")', backgroundSize: "cover"}} >
                 <div className="row h-100">
                     <div className="col-sm-12 my-auto ">
                         <div className="card bg-light justify-content-center px-5 py-2 w-50" style={{margin: "auto"}}>

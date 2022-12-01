@@ -67,14 +67,16 @@ function Group() {
                 <div className="container parentContainer">
                     <div className="row parentRow">
                         <div className="col-lg-4">
-                            <div className="row parentDiv">
+                            <h1>Group Members</h1>
+                            <div className="row parentDiv border border-dark">
                                 <div className="col-md-12 h-50">
                                     <MemberList members={members}/>
                                 </div>
                             </div>
-                            <div className="row parentDiv">
+                            <h1>Recommendations</h1>
+                            <div className="row parentDiv border border-dark">
                                 <div className="col-md-12 h-50">
-                                    <RecommendationList handleClick={handleClick} recs={recommendations}/>
+                                    <RecommendationList handleClick={handleClick} recs={recommendations} selected={selected}/>
 
                                 </div>
                             </div>

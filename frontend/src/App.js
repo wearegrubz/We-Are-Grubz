@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import SelectTaste from "./pages/SelectTaste";
 import CreateGroup from "./pages/CreateGroup";
 import Group from "./pages/Group";
+import GroupId from "./pages/GroupId";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
                   <Route path="/taste" element={<SelectTaste />}/>
                   <Route path="/create" element={<CreateGroup />}/>
                   <Route path="/group" element={<Group />}/>
+                  <Route path="/groupid" element={<GroupId />}/>
               </Routes>
           </Router>
 

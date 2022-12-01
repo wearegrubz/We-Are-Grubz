@@ -146,6 +146,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/parser": "^7.20.5",
     "babel-plugin-react-native-web": "^0.18.10"
   }
 }

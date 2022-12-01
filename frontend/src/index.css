@@ -29,8 +29,8 @@ h1 {
 }
 
 @font-face {
-    font-family: 'THEBOLDFONT';
-    src: local('THEBOLDFONT'), url(./fonts/THEBOLDFONT.ttf) format('truetype');
+    font-family: 'Hand_Of_Sean_Demo';
+    src: local('Hand_Of_Sean_Demo'), url(./fonts/Hand_Of_Sean_Demo.ttf) format('truetype');
 }
 
 @font-face {
