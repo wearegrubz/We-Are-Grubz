@@ -69,32 +69,39 @@ function CreateGroup() {
                     <Form>
                         <div className="col-sm-12 card justify-content-center mx-auto w-50"  >
                             <div class="mx-5 my-5">
-                                <h1> Create a group </h1>
+                                <h1> Create a Grubz Group </h1>
+                                <br/>
                                 <div >
-                                    <label htmlFor="exampleInputEmail1" className="form-label">Whats your name?</label>
+                                    <h5 htmlFor="exampleInputEmail1" className="form-label" style={{color: "#A03A3A"}}><b>Whats your name?</b></h5>
                                     <Form.Group className="mb-3" controlId="formBasicName">
                                         <Form.Control
+                                            className="form-control-lg"
                                             type="text"
                                             onChange={onNameChange}
                                             placeholder="Name" />
                                     </Form.Group>
                                 </div>
-
+                                <br/>
                                 <div>
-                                    <label htmlFor="exampleInputEmail1" className="form-label">Where are y'all located?</label>
+                                    <h5 htmlFor="exampleInputEmail1" className="form-label" style={{color: "#A03A3A"}}><b>Where are y'all located?</b></h5>
                                     <Form.Group className="mb-3" controlId="formBasicUsername">
-                                        <Form.Control type="text"
-                                                      onChange={onLocationChange}
-                                                      placeholder="City" />
+                                        <Form.Control
+                                            className="form-control-lg"
+                                            type="text"
+                                            onChange={onLocationChange}
+                                            placeholder="City" />
                                     </Form.Group>
                                 </div>
+                                <br/>
+                                <div className="row align-content-center">
+                                    <Button id="btn" variant="danger" type="button" size="lg" onClick={
+                                        handleGroup
+                                    }
+                                    >
+                                        <div style={{color: "#FAFAFA"}}>Generate Group</div>
+                                    </Button>
+                                </div>
 
-                                <Button variant="primary" type="button" onClick={
-                                    handleGroup
-                                }
-                                >
-                                    <b>Generate Group</b>
-                                </Button>
 
 
                                 {groupId ?

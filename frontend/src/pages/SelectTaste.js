@@ -8,6 +8,7 @@ import {
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import Selection from "../components/Selection";
+import {Form} from "react-bootstrap";
 
 function SelectTaste() {
 
@@ -58,22 +59,47 @@ function SelectTaste() {
             <div className="container-fluid" style={{height: "90vh", backgroundImage: 'url("/assets/images/food_line_art_final.webp")', backgroundSize: "cover"}}>
                 <div className="row h-100">
                     <div className="col-sm-12 my-auto">
-                        <div className="card bg-light justify-content-center px-5 py-2 w-50" style={{margin: "auto"}}>
-                            <br/>
-                            <h1>Select Your Taste</h1>
-                            <br/>
-                            <h4>Watcha feelin?</h4>
-                            {/*<br/>*/}
-                            <SelectionList handleSelect={handleSelect}/>
-                            <br/>
-                            <Button id="btn" variant="primary" type="button" onClick={() => handleJoin()}>
-                                <div style={{color: "#ECD6AB"}}>Add Your Taste</div>
-                            </Button>
-                            <br/>
-                        </div>
+                        <Form>
+                            <div className="col-sm-12 card justify-content-center mx-auto w-50">
+                                <div className="mx-5 my-5">
+                                    <h1>Select Your Taste</h1>
+                                    <br/>
+                                    <h4 style={{color: "#A03A3A"}}><b>Whatcha Feelin?</b></h4>
+                                    <br/>
+                                    <SelectionList handleSelect={handleSelect}/>
+                                    <br/>
+                                    <div className="row align-content-center">
+                                        <Button id="btn" variant="primary" type="button" size="lg" onClick={() => handleJoin()}>
+                                            <div style={{color: "#FAFAFA"}}>Add Your Taste</div>
+                                        </Button>
+                                    </div>
+                                </div>
+                            </div>
+                        </Form>
                     </div>
                 </div>
             </div>
+
+
+            {/*<div className="container-fluid" style={{height: "90vh", backgroundImage: 'url("/assets/images/food_line_art_final.webp")', backgroundSize: "cover"}}>*/}
+            {/*    <div className="row h-100">*/}
+            {/*        <div className="col-sm-12 my-auto">*/}
+            {/*            <div className="card bg-light justify-content-center px-5 py-2 w-50" style={{margin: "auto"}}>*/}
+            {/*                <br/>*/}
+            {/*                <h1>Select Your Taste</h1>*/}
+            {/*                <br/>*/}
+            {/*                <h4>Watcha feelin?</h4>*/}
+            {/*                /!*<br/>*!/*/}
+            {/*                <SelectionList handleSelect={handleSelect}/>*/}
+            {/*                <br/>*/}
+            {/*                <Button id="btn" variant="primary" type="button" onClick={() => handleJoin()}>*/}
+            {/*                    <div style={{color: "#ECD6AB"}}>Add Your Taste</div>*/}
+            {/*                </Button>*/}
+            {/*                <br/>*/}
+            {/*            </div>*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
         </>
 
     );
