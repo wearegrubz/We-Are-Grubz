@@ -1,7 +1,9 @@
 div {
-    font-family: Altone, sans-serif;
-    color: #202020;
-    line-height: 30px;
+    font-family: scandia-web, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #202020
+    /*line-height: 30px;*/
 }
 
 h1 {
@@ -37,3 +39,9 @@ h1 {
     font-family: 'GABRWFFR';
     src: local('GABRWFFR'), url(./fonts/GABRWFFR.TTF) format('truetype');
 }
+
+/*@font-face {*/
+/*    font-family: scandia-web,sans-serif;*/
+/*    font-weight: 400;*/
+/*    font-style: normal;*/
+/*}*/

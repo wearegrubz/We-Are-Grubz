@@ -38,16 +38,16 @@ function Home() {
                             <h1>Dining with friends should be simple.</h1>
                             <br />
                             <h4>Grubz makes it easier to collaborate on mealtime plans.</h4>
-                            {/*<br/>*/}
-                            <h6 style={{fontFamily: "Hand_Of_Sean", color:"#A03A3A"}}>Start here</h6>
+                            <br/>
+                            <h5 style={{fontFamily: "Hand_Of_Sean", color:"#A03A3A"}}>Start here</h5>
                             {/*<br/>*/}
                             <Form>
                                 <Form.Group className="mb-3" controlId="formBasicName">
-                                    <Form.Control name={"full_name"} type="text" onChange={onFormChange}
+                                    <Form.Control className="form-control-lg" name={"full_name"} type="text" onChange={onFormChange}
                                                   placeholder="Name"/>
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formBasicGroupId">
-                                    <Form.Control name={"group_id"} type="text" onChange={onFormChange}
+                                    <Form.Control className="form-control-lg" name={"group_id"} type="text" onChange={onFormChange}
                                                   placeholder="Group ID"/>
                                 </Form.Group>
                             </Form>
@@ -63,7 +63,7 @@ function Home() {
                                         }
                                     })
                                 }}>
-                                    <div style={{color: "#ECD6AB"}}>Join Grubz Group</div>
+                                    <div style={{color: "#FAFAFA"}}>Join Grubz Group</div>
                                 </Button>
                             </div>
 
