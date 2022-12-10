@@ -141,3 +141,8 @@ Based on your required user stories, the next step is identifying your [core scr
     - (Read/GET) Get Users in group
     - (Read/GET) Get recommendations
 
+## Gif Walkthrough
+![grubz_gif](https://user-images.githubusercontent.com/56606742/206838336-b7161d52-7f9a-4916-9e27-8ffa3597185a.gif)
+
+
+
